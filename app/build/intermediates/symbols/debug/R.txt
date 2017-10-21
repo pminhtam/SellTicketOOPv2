@@ -777,6 +777,7 @@ int id multiply 0x7f0c0023
 int id nav_home 0x7f0c009d
 int id nav_login 0x7f0c009e
 int id nav_signin 0x7f0c009f
+int id nav_signout 0x7f0c00a0
 int id nav_view 0x7f0c0075
 int id navigation_header_container 0x7f0c007c
 int id never 0x7f0c0040

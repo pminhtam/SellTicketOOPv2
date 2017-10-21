@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity
             //Thay đổi fragment hiển thị
             fragmentTransaction.add(R.id.frame, frag);
             fragmentTransaction.commit();
+            //hiện lên item menu
+            showItem(R.id.nav_login);
+            showItem(R.id.nav_signin);
+            //ẩn đi các item
+            hideItem(R.id.nav_signout);
+
 
         }
         else{
@@ -70,6 +76,8 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
 
+
+            showItem(R.id.nav_signout);
             //khi đã đăng nhập ẩn cái item đăng nhập trên menu đi
             hideItem(R.id.nav_login);
             hideItem(R.id.nav_signin);
@@ -140,13 +148,17 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             SignInFragment frag = new SignInFragment();
-            //Truyền chuỗi token cho frag bằng Bundle
-            Bundle bundle = new Bundle();
-            bundle.putString("token",token);
-            frag.setArguments(bundle);
-            //
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_signout) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            new SignOut(MainActivity.this,fragmentManager);
+            //hiện lên item menu
+            showItem(R.id.nav_login);
+            showItem(R.id.nav_signin);
+            //ẩn đi các item
+            hideItem(R.id.nav_signout);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -196,5 +208,10 @@ public class MainActivity extends AppCompatActivity
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = nav_view.getMenu();
         nav_Menu.findItem(id).setVisible(false);
+    }
+    private void showItem(int id){
+        nav_view = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = nav_view.getMenu();
+        nav_Menu.findItem(id).setVisible(true);
     }
 }

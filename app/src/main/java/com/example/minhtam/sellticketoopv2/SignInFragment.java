@@ -15,7 +15,7 @@ import android.widget.Toast;
  * A simple {@link Fragment} subclass.
  */
 public class SignInFragment extends Fragment {
-
+    //Đăng ký
 
     public SignInFragment() {
         // Required empty public constructor

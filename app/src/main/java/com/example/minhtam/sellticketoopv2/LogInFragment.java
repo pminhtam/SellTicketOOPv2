@@ -31,7 +31,7 @@ import okhttp3.Response;
  */
 public class LogInFragment extends Fragment {
 
-
+    //class đăng nhập
     TokenManager tokenManager;
 
     @Override
@@ -59,7 +59,6 @@ public class LogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-// Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_log_in, container, false);
         edtEmailLogIn = (EditText) view.findViewById(R.id.edtEmailLogIn);
         edtPasswordLogIn = (EditText) view.findViewById(R.id.edtPasswordLogIn);

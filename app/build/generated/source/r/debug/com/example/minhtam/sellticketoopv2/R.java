@@ -3131,6 +3131,7 @@ containing a value of this type.
         public static final int nav_home=0x7f0c009d;
         public static final int nav_login=0x7f0c009e;
         public static final int nav_signin=0x7f0c009f;
+        public static final int nav_signout=0x7f0c00a0;
         public static final int nav_view=0x7f0c0075;
         public static final int navigation_header_container=0x7f0c007c;
         public static final int never=0x7f0c0040;

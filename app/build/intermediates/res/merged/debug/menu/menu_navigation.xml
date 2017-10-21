@@ -14,6 +14,13 @@
             android:id="@+id/nav_signin"
             android:icon="@drawable/ic_menu_login"
             android:title="Đăng ký" />
+
+    </group>
+    <group>
+        <item
+            android:id="@+id/nav_signout"
+            android:icon="@drawable/ic_menu_login"
+            android:title="Đăng xuất" />
     </group>
 
 </menu>
