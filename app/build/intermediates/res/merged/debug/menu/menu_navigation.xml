@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="Trang chủ" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_menu_login"
+            android:title="Đăng nhập" />
+        <item
+            android:id="@+id/nav_signin"
+            android:icon="@drawable/ic_menu_login"
+            android:title="Đăng ký" />
+    </group>
+
+</menu>

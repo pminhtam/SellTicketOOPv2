@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_navigation.xml",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\menu\\menu_navigation.xml"
+    },
+    {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\menu\\main.xml"
+    }
+]
