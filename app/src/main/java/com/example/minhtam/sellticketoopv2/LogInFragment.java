@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +53,7 @@ public class LogInFragment extends Fragment {
     EditText edtEmailLogIn,edtPasswordLogIn;
     Button btnSubmit;
     String token;
-
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,6 +64,7 @@ public class LogInFragment extends Fragment {
         edtEmailLogIn = (EditText) view.findViewById(R.id.edtEmailLogIn);
         edtPasswordLogIn = (EditText) view.findViewById(R.id.edtPasswordLogIn);
         btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
+        context = getActivity();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +118,17 @@ public class LogInFragment extends Fragment {
                     tokenManager.setToken(token);
                     Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
 
+                    //Đăng nhập thành công thì chuyển sang fragment film
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    HomeFragment frag = new HomeFragment();
+                    //Truyền chuỗi token cho frag
+                    Bundle bundle = new Bundle();
+                    bundle.putString("token",token);
+                    frag.setArguments(bundle);
+                    //Thay đổi fragment hiển thị
+                    fragmentTransaction.replace(R.id.frame,frag);
+                    fragmentTransaction.commit();
 
                 } else Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {

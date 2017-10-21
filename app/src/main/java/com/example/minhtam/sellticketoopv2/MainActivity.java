@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,TokenManager {
 
     String token = "";
-
+    NavigationView nav_view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity
             //Thay đổi fragment hiển thị
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
+
+            //khi đã đăng nhập ẩn cái item đăng nhập trên menu đi
+            hideItem(R.id.nav_login);
+            hideItem(R.id.nav_signin);
 
         }
 
@@ -187,5 +191,10 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         return "";
+    }
+    private void hideItem(int id){
+        nav_view = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = nav_view.getMenu();
+        nav_Menu.findItem(id).setVisible(false);
     }
 }
