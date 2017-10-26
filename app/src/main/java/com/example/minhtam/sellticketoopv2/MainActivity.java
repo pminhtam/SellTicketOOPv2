@@ -160,6 +160,13 @@ public class MainActivity extends AppCompatActivity
             //ẩn đi các item
             hideItem(R.id.nav_signout);
         }
+        else if (id ==R.id.nav_chooseSeat){     //thử nghiệm
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            ChooseSeatFragment frag = new ChooseSeatFragment();
+            fragmentTransaction.replace(R.id.frame,frag);
+            fragmentTransaction.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

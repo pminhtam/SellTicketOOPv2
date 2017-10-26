@@ -192,6 +192,10 @@
         "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\layout\\item_film_.xml"
     },
     {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_choose_seat.xml",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\layout\\fragment_choose_seat.xml"
+    },
+    {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
         "source": "C:\\Users\\Minh Tam\\.android\\build-cache\\b3db3dcbd694db637c4cb6bdcc3ef90640814bca\\output\\res\\layout\\notification_template_lines.xml"
     },
