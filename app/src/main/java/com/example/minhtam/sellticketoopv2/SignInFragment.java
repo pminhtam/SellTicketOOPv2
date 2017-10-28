@@ -1,7 +1,10 @@
 package com.example.minhtam.sellticketoopv2;
 
 
+<<<<<<< HEAD
 import android.content.Context;
+=======
+>>>>>>> master
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -66,9 +69,14 @@ public class SignInFragment extends Fragment {
                 String email = edtEmailSign.getText().toString();
                 String password = edtPasswordSign.getText().toString();
                 String name = edtNameSign.getText().toString();
+<<<<<<< HEAD
 //                Toast.makeText(getActivity(),"Email:"+email+"\n password:"+password,Toast.LENGTH_LONG).show();
                 new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_up",name,email,password);
 
+=======
+                Toast.makeText(getActivity(),"Email:"+email+"\n password:"+password,Toast.LENGTH_LONG).show();
+                new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_up",name,email,password);
+>>>>>>> master
             }
         });
 
@@ -98,6 +106,7 @@ public class SignInFragment extends Fragment {
             }
             return null;
         }
+<<<<<<< HEAD
 
         @Override
         protected void onPostExecute(String s) {
@@ -114,6 +123,24 @@ public class SignInFragment extends Fragment {
                     fragmentTransaction.replace(R.id.frame,frag);
                     fragmentTransaction.commit();
 
+=======
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                JSONObject body = new JSONObject(s);
+                int code = body.getInt("code");
+                if (code == 1) {
+                    Toast.makeText(getActivity(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    //Đăng nhập thành công thì chuyển sang fragment film
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    LogInFragment frag = new LogInFragment();
+
+                    fragmentTransaction.replace(R.id.frame,frag);
+                    fragmentTransaction.commit();
+
+>>>>>>> master
                 } else Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();

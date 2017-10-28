@@ -76,6 +76,10 @@ public class LogInFragment extends Fragment {
                         //API web dang nhap
 //                        new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
                         request("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                     }
                 });
             }
@@ -83,6 +87,10 @@ public class LogInFragment extends Fragment {
 
         return view;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     public void request(String url,String email,String password){
         new requestPostURL().execute(url,email,password);
     }
