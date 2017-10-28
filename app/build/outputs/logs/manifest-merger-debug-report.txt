@@ -1,43 +1,74 @@
 -- Merging decision tree log ---
 manifest
 ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\design-24.2.1.aar\f532618c0774706bc3d4f31068578090\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-24.2.1.aar\8765cea3f35b35cbed49cbe6a7e62a1b\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\4819e9f83661e91824a452df39231190\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:recyclerview-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-24.2.1.aar\bb4c02dd48840317814bc017319e6d66\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-v4-24.2.1.aar\26c28accaf99bb95a91039b361ae36b0\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-24.2.1.aar\17a79df6f49f076acd55914fff3d4814\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-24.2.1.aar\779162184b226e16b112810b9eda40e6\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-fragment-24.2.1.aar\423c9796bf57e0fd7667eb1dfdd36803\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-ui-24.2.1.aar\96a4fefe6f66479e42fb67fd47969e48\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-media-compat-24.2.1.aar\a43d7885c895a1f1cf4185bc6f5f0ffb\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-utils-24.2.1.aar\9884fe789e8cabb3eac4cfdaa73e7939\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-compat-24.2.1.aar\b94c2fd44ee679ca50d341b9e52df9ed\AndroidManifest.xml:17:1-27:12
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
 	package
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:3:5-50
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
+		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:1-23:12
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:2:11-69
-	android:versionCode
-		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:4:5-66
 	android:name
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:4:22-64
 application
 ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:5:5-21:19
-MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.android\build-cache\4bab6788532b9eb9886acf0acb09bb677ed7271e\output\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.android\build-cache\b3db3dcbd694db637c4cb6bdcc3ef90640814bca\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.android\build-cache\64ed4b36e9a099ca54ecb5a256a9e6892f81e7e1\output\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.android\build-cache\0eb3c3968c6f973f182c1bcd556af42325e7c883\output\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.android\build-cache\b2a6257d86bd572cec4df3300a8a55c243162c67\output\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.android\build-cache\2c76c33e779436b56c66efb96c6dafbc6bee2941\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.android\build-cache\3b592f8de252d40597b2f3dea18e115bb3d57e7f\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.android\build-cache\940f9264ac35ae846e5992b124a611a06a9557e6\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.android\build-cache\2ffef9d7e699131d750631289b4ffcc1b39cc70a\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.android\build-cache\87eb8f00ca008ec9d3a5a3e5e6e375e10ab018cd\output\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.android\build-cache\620fad4116b29768d701f82fc4d675ba6d9e6688\output\AndroidManifest.xml:25:5-20
-	android:label
-		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:8:9-41
+MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\design-24.2.1.aar\f532618c0774706bc3d4f31068578090\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\design-24.2.1.aar\f532618c0774706bc3d4f31068578090\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-24.2.1.aar\8765cea3f35b35cbed49cbe6a7e62a1b\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-24.2.1.aar\8765cea3f35b35cbed49cbe6a7e62a1b\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\4819e9f83661e91824a452df39231190\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\4819e9f83661e91824a452df39231190\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-v4-24.2.1.aar\26c28accaf99bb95a91039b361ae36b0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-v4-24.2.1.aar\26c28accaf99bb95a91039b361ae36b0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-24.2.1.aar\17a79df6f49f076acd55914fff3d4814\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-24.2.1.aar\17a79df6f49f076acd55914fff3d4814\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-24.2.1.aar\779162184b226e16b112810b9eda40e6\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-24.2.1.aar\779162184b226e16b112810b9eda40e6\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-fragment-24.2.1.aar\423c9796bf57e0fd7667eb1dfdd36803\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-fragment-24.2.1.aar\423c9796bf57e0fd7667eb1dfdd36803\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-ui-24.2.1.aar\96a4fefe6f66479e42fb67fd47969e48\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-ui-24.2.1.aar\96a4fefe6f66479e42fb67fd47969e48\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-media-compat-24.2.1.aar\a43d7885c895a1f1cf4185bc6f5f0ffb\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-media-compat-24.2.1.aar\a43d7885c895a1f1cf4185bc6f5f0ffb\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-utils-24.2.1.aar\9884fe789e8cabb3eac4cfdaa73e7939\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-utils-24.2.1.aar\9884fe789e8cabb3eac4cfdaa73e7939\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-compat-24.2.1.aar\b94c2fd44ee679ca50d341b9e52df9ed\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-compat-24.2.1.aar\b94c2fd44ee679ca50d341b9e52df9ed\AndroidManifest.xml:25:5-20
 	android:supportsRtl
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:9:9-35
-	android:allowBackup
-		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:6:9-35
+	android:label
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:8:9-41
 	android:icon
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:10:9-40
 activity#com.example.minhtam.sellticketoopv2.MainActivity
@@ -60,23 +91,41 @@ ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidMan
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:18:27-74
 uses-sdk
 INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.android\build-cache\4bab6788532b9eb9886acf0acb09bb677ed7271e\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.android\build-cache\b3db3dcbd694db637c4cb6bdcc3ef90640814bca\output\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.android\build-cache\64ed4b36e9a099ca54ecb5a256a9e6892f81e7e1\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.android\build-cache\0eb3c3968c6f973f182c1bcd556af42325e7c883\output\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.android\build-cache\b2a6257d86bd572cec4df3300a8a55c243162c67\output\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:recyclerview-v7:24.2.1] C:\Users\Minh Tam\.android\build-cache\7bf09ac7013d610fcc08567e9f1dee6a2fd725e2\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.android\build-cache\2c76c33e779436b56c66efb96c6dafbc6bee2941\output\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.android\build-cache\3b592f8de252d40597b2f3dea18e115bb3d57e7f\output\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.android\build-cache\940f9264ac35ae846e5992b124a611a06a9557e6\output\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.android\build-cache\2ffef9d7e699131d750631289b4ffcc1b39cc70a\output\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.android\build-cache\87eb8f00ca008ec9d3a5a3e5e6e375e10ab018cd\output\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.android\build-cache\620fad4116b29768d701f82fc4d675ba6d9e6688\output\AndroidManifest.xml:21:5-23:58
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\design-24.2.1.aar\f532618c0774706bc3d4f31068578090\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\design-24.2.1.aar\f532618c0774706bc3d4f31068578090\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-24.2.1.aar\8765cea3f35b35cbed49cbe6a7e62a1b\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-24.2.1.aar\8765cea3f35b35cbed49cbe6a7e62a1b\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\4819e9f83661e91824a452df39231190\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\4819e9f83661e91824a452df39231190\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-24.2.1.aar\bb4c02dd48840317814bc017319e6d66\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-24.2.1.aar\bb4c02dd48840317814bc017319e6d66\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-v4-24.2.1.aar\26c28accaf99bb95a91039b361ae36b0\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-v4-24.2.1.aar\26c28accaf99bb95a91039b361ae36b0\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-24.2.1.aar\17a79df6f49f076acd55914fff3d4814\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-24.2.1.aar\17a79df6f49f076acd55914fff3d4814\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-24.2.1.aar\779162184b226e16b112810b9eda40e6\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-24.2.1.aar\779162184b226e16b112810b9eda40e6\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-fragment-24.2.1.aar\423c9796bf57e0fd7667eb1dfdd36803\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-fragment-24.2.1.aar\423c9796bf57e0fd7667eb1dfdd36803\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-ui-24.2.1.aar\96a4fefe6f66479e42fb67fd47969e48\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-ui-24.2.1.aar\96a4fefe6f66479e42fb67fd47969e48\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-media-compat-24.2.1.aar\a43d7885c895a1f1cf4185bc6f5f0ffb\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-media-compat-24.2.1.aar\a43d7885c895a1f1cf4185bc6f5f0ffb\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-utils-24.2.1.aar\9884fe789e8cabb3eac4cfdaa73e7939\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-core-utils-24.2.1.aar\9884fe789e8cabb3eac4cfdaa73e7939\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-compat-24.2.1.aar\b94c2fd44ee679ca50d341b9e52df9ed\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\support-compat-24.2.1.aar\b94c2fd44ee679ca50d341b9e52df9ed\AndroidManifest.xml:21:5-23:58
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.android\build-cache\b3db3dcbd694db637c4cb6bdcc3ef90640814bca\output\AndroidManifest.xml:23:9-75
+		ADDED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Minh Tam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-24.2.1.aar\8765cea3f35b35cbed49cbe6a7e62a1b\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml

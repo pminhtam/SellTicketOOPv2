@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity
             //Thay đổi fragment hiển thị
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
+
+            showItem(R.id.nav_signout);
         } else if (id == R.id.nav_login) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
