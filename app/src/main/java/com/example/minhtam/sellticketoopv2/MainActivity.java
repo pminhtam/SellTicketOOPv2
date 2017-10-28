@@ -139,6 +139,15 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
             showItem(R.id.nav_signout);
+        } else if(id == R.id.nav_place) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            PlaceFragment frag = new PlaceFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("token", token);
+            frag.setArguments(bundle);
+            fragmentTransaction.replace(R.id.frame,frag);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_login) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
