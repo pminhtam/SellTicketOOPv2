@@ -74,13 +74,17 @@ public class LogInFragment extends Fragment {
                         String email = edtEmailLogIn.getText().toString();
                         Toast.makeText(getActivity(),"dang chay",Toast.LENGTH_LONG).show();
                         //API web dang nhap
-                        new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
+//                        new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
+                        request("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
                     }
                 });
             }
         });
 
         return view;
+    }
+    public void request(String url,String email,String password){
+        new requestPostURL().execute(url,email,password);
     }
     //class gui request để đăng nhập
     private class requestPostURL extends AsyncTask<String,Integer,String> {

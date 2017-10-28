@@ -21,7 +21,8 @@ public class SignOut {
     }
     private void DeleteCache(){
         tokenManager = (TokenManager) context;
-        tokenManager.setToken("");
+        tokenManager.setToken("");              //xóa token
+        //Quay lại màn hình đăng nhập
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         LogInFragment frag = new LogInFragment();
         fragmentTransaction.replace(R.id.frame,frag);
