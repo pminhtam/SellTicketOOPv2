@@ -72,14 +72,10 @@ public class LogInFragment extends Fragment {
                     public void run() {
                         String password = edtPasswordLogIn.getText().toString();
                         String email = edtEmailLogIn.getText().toString();
-                        Toast.makeText(getActivity(),"dang chay",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "dang chay", Toast.LENGTH_LONG).show();
                         //API web dang nhap
 //                        new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
-                        request("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+                        request("https://tickett.herokuapp.com/api/v1/customers/sign_in", email, password);
                     }
                 });
             }
@@ -87,10 +83,7 @@ public class LogInFragment extends Fragment {
 
         return view;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> master
     public void request(String url,String email,String password){
         new requestPostURL().execute(url,email,password);
     }
