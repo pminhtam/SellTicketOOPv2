@@ -1,6 +1,5 @@
 package com.example.minhtam.sellticketoopv2;
 
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,41 +22,38 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * Created by ThanhDat on 10/27/2017.
  */
-public class HomeFragment extends Fragment {
 
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+public class PlaceFragment extends Fragment {
 
     String token;
-    FilmAdapter adapter;
-    RecyclerView rcFilm;
+    PlaceAdapter adapter;
+    RecyclerView rcPlace;
     Context context;
 
-    @Override
+    public PlaceFragment() {}
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //lấy chuỗi token được truyền từ MainActivity sang
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_place, container, false);
         token = getArguments().getString("token");
-        rcFilm = (RecyclerView) view.findViewById(R.id.rcFilm);
+        rcPlace = (RecyclerView) view.findViewById(R.id.rcPlace);
         context = getActivity();
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetFilm().execute("https://tickett.herokuapp.com/api/v1/customers/films","1");
+                new PlaceFragment.GetPlaces().execute("https://tickett.herokuapp.com/api/v1/customers/locations","1");
             }
         });
         return view;
     }
-    private class GetFilm extends AsyncTask<String,Integer,String> {
-        //API web dang nhap
+
+    private class GetPlaces extends AsyncTask<String,Integer,String> {
         OkHttpClient okHttpClient = new OkHttpClient();
 
         @Override
@@ -82,30 +78,24 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(String s) {
             try {
                 JSONObject body = new JSONObject(s);
-//                Toast.makeText(getActivity(),s,Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(),s, Toast.LENGTH_LONG).show();
                 if(body !=null) {
-                    String data = body.getString("data");
-                    JSONArray listfilms = body.getJSONArray("data");
-
-                    ArrayList<ItemFilm> items = new ArrayList<ItemFilm>();
-                    for (int i = 0; i < listfilms.length(); i++) {
-                        String name = listfilms.getJSONObject(i).getString("name").toString();
-                        String kind = listfilms.getJSONObject(i).getString("kind").toString();
-                        String image = listfilms.getJSONObject(i).getString("image").toString();
-
-                        items.add(new ItemFilm(name, image, kind));
+                    JSONArray listPlaces = body.getJSONArray("data");
+                    ArrayList<ItemPlace> items = new ArrayList<ItemPlace>();
+                    for (int i = 0; i < listPlaces.length(); i++) {
+                        String name = listPlaces.getJSONObject(i).getString("name");
+                        Integer id = listPlaces.getJSONObject(i).getInt("id");
+                        items.add(new ItemPlace(name, id));
                     }
-                    rcFilm.setHasFixedSize(true);
+                    rcPlace.setHasFixedSize(true);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-                    rcFilm.setLayoutManager(layoutManager);
-                    adapter = new FilmAdapter(getActivity(), items);
-                    rcFilm.setAdapter(adapter);
-//                Toast.makeText(FilmActivity.this,s,Toast.LENGTH_LONG).show();
+                    rcPlace.setLayoutManager(layoutManager);
+                    adapter = new PlaceAdapter(getActivity(), items);
+                    rcPlace.setAdapter(adapter);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
-
 }
