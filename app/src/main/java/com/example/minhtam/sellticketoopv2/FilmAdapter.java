@@ -1,12 +1,16 @@
 package com.example.minhtam.sellticketoopv2;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -20,11 +24,12 @@ import java.util.ArrayList;
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<ItemFilm> items;
-
-    public FilmAdapter(Context context,ArrayList<ItemFilm> items){
+    ArrayList<ArrayList<ItemFilm>> items;
+    FragmentManager fragmentManager;
+    public FilmAdapter(Context context,ArrayList<ArrayList<ItemFilm>> items,FragmentManager fragmentManager){
         this.context = context;
         this.items = items;
+        this.fragmentManager = fragmentManager;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,17 +39,35 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.txtNameFilm.setText(items.get(position).getName());
-        String image = items.get(position).getImage();
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+//        holder.txtNameFilm.setText(items.get(position).get(position).getName());
+        int a = items.get(position).size();
+        holder.txtNameFilm.setText(String.valueOf(a));
+
+//        String image = items.get(position).get(0).getImage();
         Glide.with(context)
-                .load("https://tickett.herokuapp.com" + items.get(position).getImage())
+                .load("https://tickett.herokuapp.com" + items.get(position).get(0).getImage())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgFilm);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "VI tri la " +String.valueOf(position), Toast.LENGTH_SHORT).show();
+                String id = String.valueOf(items.get(position).get(0).getId());
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FilmFragment frag = new FilmFragment(context);
+                fragmentTransaction.replace(R.id.frame,frag);
+                Bundle bundle = new Bundle();
+                bundle.putString("id",id);
+                frag.setArguments(bundle);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
+//        return items.size();
         return items.size();
     }
 
