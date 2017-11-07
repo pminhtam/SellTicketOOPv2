@@ -7,11 +7,12 @@ package com.example.minhtam.sellticketoopv2;
 public class ItemFilm {
     //Lưu thông tin từng bộ phim
     private String name,image,kind;
-
-    public ItemFilm(String name, String image, String kind) {
+    String id;
+    public ItemFilm(String id,String name, String image, String kind) {
         this.name = name;
         this.image = image;
         this.kind = kind;
+        this.id = id;
     }
 
     public String getName() {
@@ -36,4 +37,13 @@ public class ItemFilm {
     public void setKind(String kind) {
         this.kind = kind;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String getId() {
+        return id;
+    }
+
+
 }
