@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <ViewFlipper
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/viewFlipper">
+        android:layout_height="260dp"
+        android:id="@+id/viewFlipperFilmsHeader">
+
+        <ImageView
+            android:id="@+id/imgFilmsHeader0"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+
+            android:scaleType="fitXY" />
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/imgFilmsHeader1"
+            android:scaleType="fitXY"
             />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/imgFilmsHeader2"
+            android:scaleType="fitXY"
             />
     </ViewFlipper>
 </LinearLayout>

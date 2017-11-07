@@ -11,7 +11,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +40,8 @@ public class FilmFragment extends Fragment {
     Context context;
     String id;
     ImageView imgFilmElement;
+    TextView txtNameFilmElement;
+    Button btnFilmElement;
     public FilmFragment(Context context) {
         this.context = context;
         // Required empty public constructor
@@ -49,11 +53,23 @@ public class FilmFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_film, container, false);
         id = getArguments().getString("id");
         imgFilmElement = (ImageView) view.findViewById(R.id.imgFilmElement);
+        txtNameFilmElement = (TextView) view.findViewById(R.id.txtNameFilmElement);
+        btnFilmElement = (Button) view.findViewById(R.id.btnFilmElement);
         Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 new GetFilmElement().execute("https://tickett.herokuapp.com/api/v1/customers/films/" + id);
+            }
+        });
+        btnFilmElement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                ChooseSeatFragment frag = new ChooseSeatFragment();
+                fragmentTransaction.replace(R.id.frame,frag);
+                fragmentTransaction.commit();
             }
         });
         return view;
@@ -92,7 +108,9 @@ public class FilmFragment extends Fragment {
                             .load("https://tickett.herokuapp.com" +image)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(imgFilmElement);
+                    txtNameFilmElement.setText(name);
                     Toast.makeText(getActivity(), "Xong roi", Toast.LENGTH_SHORT).show();
+
 
                 }
                 else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();

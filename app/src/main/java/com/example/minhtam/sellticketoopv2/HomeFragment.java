@@ -2,6 +2,8 @@ package com.example.minhtam.sellticketoopv2;
 
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -138,6 +140,7 @@ public class HomeFragment extends Fragment {
                     rcFilm.setHasFixedSize(true);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
                     rcFilm.setLayoutManager(layoutManager);
+                    rcFilm.addItemDecoration(new SimpleDividerItemDecoration(context));
                     adapter = new FilmAdapter(getActivity(), itemsALL,getFragmentManager());
                     rcFilm.setAdapter(adapter);
 
@@ -145,6 +148,32 @@ public class HomeFragment extends Fragment {
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+    public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
+        private Drawable mDivider;
+
+        public SimpleDividerItemDecoration(Context context) {
+            mDivider = context.getResources().getDrawable(R.drawable.line_divider);
+        }
+
+        @Override
+        public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+            int left = parent.getPaddingLeft();
+            int right = parent.getWidth() - parent.getPaddingRight();
+
+            int childCount = parent.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                View child = parent.getChildAt(i);
+
+                RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+                int top = child.getBottom() + params.bottomMargin;
+                int bottom = top + mDivider.getIntrinsicHeight();
+
+                mDivider.setBounds(left, top, right, bottom);
+                mDivider.draw(c);
             }
         }
     }
