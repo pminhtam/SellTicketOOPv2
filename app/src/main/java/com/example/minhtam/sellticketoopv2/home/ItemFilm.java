@@ -1,4 +1,4 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.home;
 
 /**
  * Created by Minh Tam on 10/21/2017.
@@ -7,7 +7,7 @@ package com.example.minhtam.sellticketoopv2;
 public class ItemFilm {
     //Lưu thông tin từng bộ phim
     private String name,image,kind;
-    String id;
+    private String id;
     public ItemFilm(String id,String name, String image, String kind) {
         this.name = name;
         this.image = image;

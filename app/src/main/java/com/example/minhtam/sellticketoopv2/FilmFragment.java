@@ -8,21 +8,27 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -39,9 +45,10 @@ public class FilmFragment extends Fragment {
 
     Context context;
     String id;
+    String token;
     ImageView imgFilmElement;
     TextView txtNameFilmElement;
-    Button btnFilmElement;
+    ListView lvFilmElement;
     public FilmFragment(Context context) {
         this.context = context;
         // Required empty public constructor
@@ -52,9 +59,11 @@ public class FilmFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_film, container, false);
         id = getArguments().getString("id");
+        token = getArguments().getString("token");
         imgFilmElement = (ImageView) view.findViewById(R.id.imgFilmElement);
         txtNameFilmElement = (TextView) view.findViewById(R.id.txtNameFilmElement);
-        btnFilmElement = (Button) view.findViewById(R.id.btnFilmElement);
+        lvFilmElement = (ListView) view.findViewById(R.id.lvFilmElement);
+        Log.e("FilmFragment",token);
         Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -62,20 +71,18 @@ public class FilmFragment extends Fragment {
                 new GetFilmElement().execute("https://tickett.herokuapp.com/api/v1/customers/films/" + id);
             }
         });
-        btnFilmElement.setOnClickListener(new View.OnClickListener() {
+        getActivity().runOnUiThread(new Runnable() {
             @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                ChooseSeatFragment frag = new ChooseSeatFragment();
-                fragmentTransaction.replace(R.id.frame,frag);
-                fragmentTransaction.commit();
+            public void run() {
+                Log.e("FilmFragment","Chay GetFilmSchedules");
+                new GetFilmSchedules().execute("https://tickett.herokuapp.com/api/v1/customers/schedules",id);
             }
         });
+
         return view;
     }
 
-    //
+    //Lay thông tin bộ phim
     class GetFilmElement extends AsyncTask<String,Void,String>{
         OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -121,4 +128,65 @@ public class FilmFragment extends Fragment {
         }
     }
     //
+    // Lấy dữ liệu về địa điểm chiếu
+    class GetFilmSchedules extends AsyncTask<String,Void,String>{
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String film_id = strings[1];
+            String url = strings[0] + "?film_id="+film_id;
+            Request request = new Request.Builder()
+                    .url(url).addHeader("Authorization",token).build();
+            try {
+                Response response = okHttpClient.newCall(request).execute();
+                return response.body().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject body = new JSONObject(s);
+                int code = body.getInt("code");
+                if (code == 1) {
+                    Log.e("FilmFragment","Chay GetFilmSchedules xong roi nhé");
+                    JSONArray listSchedule = body.getJSONArray("data");
+                    ArrayList<ItemFilmSchedules> itemFilmSchedules = new ArrayList<>();
+                    final ArrayList<String> strItem = new ArrayList<String>();
+                    for (int i=0;i<listSchedule.length();i++){
+                        String id = listSchedule.getJSONObject(i).getString("id").toString();
+                        strItem.add(id);
+                    }
+                    ArrayAdapter adapter = new ArrayAdapter(context,android.R.layout.simple_list_item_1,strItem);
+                    lvFilmElement.setAdapter(adapter);
+                    lvFilmElement.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            FragmentManager fragmentManager = getFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            ChooseSeatFragment frag = new ChooseSeatFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("id",strItem.get(position));
+                            bundle.putString("token",token);
+                            frag.setArguments(bundle);
+                            fragmentTransaction.replace(R.id.frame,frag);
+                            fragmentTransaction.commit();
+
+                        }
+                    });
+                    Toast.makeText(getActivity(), "Co Lít View", Toast.LENGTH_SHORT).show();
+                }
+                else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
 }

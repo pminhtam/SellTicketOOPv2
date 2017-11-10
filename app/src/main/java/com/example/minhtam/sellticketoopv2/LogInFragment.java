@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.minhtam.sellticketoopv2.home.HomeFragment;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -85,10 +87,10 @@ public class LogInFragment extends Fragment {
     }
 
     public void request(String url,String email,String password){
-        new requestPostURL().execute(url,email,password);
+        new PostLogIn().execute(url,email,password);
     }
     //class gui request để đăng nhập
-    private class requestPostURL extends AsyncTask<String,Integer,String> {
+    private class PostLogIn extends AsyncTask<String,Integer,String> {
         //API web dang nhap
         OkHttpClient okHttpClient = new OkHttpClient();
         @Override

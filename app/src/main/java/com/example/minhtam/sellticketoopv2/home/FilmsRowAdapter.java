@@ -1,6 +1,5 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.home;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +14,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.FilmFragment;
+import com.example.minhtam.sellticketoopv2.R;
 
 import java.util.ArrayList;
 
@@ -27,12 +28,12 @@ public class FilmsRowAdapter extends RecyclerView.Adapter<FilmsRowAdapter.ViewHo
     Context context;
     ArrayList<ItemFilm> itemsRow;
     FragmentManager fragmentManager;
-
-    public FilmsRowAdapter(Context context,ArrayList<ItemFilm> itemsRow,FragmentManager fragmentManager){
+    String token;
+    public FilmsRowAdapter(Context context,ArrayList<ItemFilm> itemsRow,FragmentManager fragmentManager,String token){
         this.context = context;
         this.itemsRow = itemsRow;
         this.fragmentManager = fragmentManager;
-
+        this.token = token;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -59,6 +60,7 @@ public class FilmsRowAdapter extends RecyclerView.Adapter<FilmsRowAdapter.ViewHo
                 fragmentTransaction.replace(R.id.frame,frag);
                 Bundle bundle = new Bundle();
                 bundle.putString("id",id);
+                bundle.putString("token",token);
                 frag.setArguments(bundle);
                 fragmentTransaction.commit();
             }

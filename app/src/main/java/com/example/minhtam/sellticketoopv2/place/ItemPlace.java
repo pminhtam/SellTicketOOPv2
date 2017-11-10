@@ -1,4 +1,4 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.place;
 
 /**
  * Created by ThanhDat on 10/27/2017.

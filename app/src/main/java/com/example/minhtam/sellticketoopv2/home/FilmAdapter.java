@@ -1,4 +1,4 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.home;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.FilmFragment;
+import com.example.minhtam.sellticketoopv2.R;
 
 import java.util.ArrayList;
 
@@ -31,10 +31,12 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<ArrayList<ItemFilm>> items;
     FragmentManager fragmentManager;
     FilmsRowAdapter adapter;
-    public FilmAdapter(Context context,ArrayList<ArrayList<ItemFilm>> items,FragmentManager fragmentManager){
+    String token;
+    public FilmAdapter(Context context,ArrayList<ArrayList<ItemFilm>> items,FragmentManager fragmentManager,String token){
         this.context = context;
         this.items = items;
         this.fragmentManager = fragmentManager;
+        this.token = token;
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -75,6 +77,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         fragmentTransaction.replace(R.id.frame,frag);
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
+                        bundle.putString("token",token);
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -88,6 +91,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         fragmentTransaction.replace(R.id.frame,frag);
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
+                        bundle.putString("token",token);
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -101,6 +105,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         fragmentTransaction.replace(R.id.frame,frag);
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
+                        bundle.putString("token",token);
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -114,7 +119,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
 
                 viewHolder1.rcFilmsRow.setLayoutManager(layoutManager);
-                adapter = new FilmsRowAdapter(context, items.get(position),fragmentManager);
+                adapter = new FilmsRowAdapter(context, items.get(position),fragmentManager,token);
                 viewHolder1.rcFilmsRow.setAdapter(adapter);
 
         }
