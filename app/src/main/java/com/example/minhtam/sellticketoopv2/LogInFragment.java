@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
@@ -53,6 +54,7 @@ public class LogInFragment extends Fragment {
     }
 
     EditText edtEmailLogIn,edtPasswordLogIn;
+    TextView txtCreateAccount;
     Button btnSubmit;
     String token;
     Context context;
@@ -64,22 +66,31 @@ public class LogInFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_log_in, container, false);
         edtEmailLogIn = (EditText) view.findViewById(R.id.edtEmailLogIn);
         edtPasswordLogIn = (EditText) view.findViewById(R.id.edtPasswordLogIn);
+        txtCreateAccount = (TextView) view.findViewById(R.id.txtCreateAccount);
         btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
         context = getActivity();
+
+        // Click Create Account
+        txtCreateAccount.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame, new SignInFragment());
+                fragmentTransaction.commit();
+            }
+        });
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String password = edtPasswordLogIn.getText().toString();
-                        String email = edtEmailLogIn.getText().toString();
-                        Toast.makeText(getActivity(), "dang chay", Toast.LENGTH_LONG).show();
-                        //API web dang nhap
-//                        new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_in",email,password);
-                        request("https://tickett.herokuapp.com/api/v1/customers/sign_in", email, password);
-                    }
-                });
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                String password = edtPasswordLogIn.getText().toString();
+                String email = edtEmailLogIn.getText().toString();
+                Toast.makeText(getActivity(), "Đang gửi", Toast.LENGTH_LONG).show();
+                request("https://tickett.herokuapp.com/api/v1/customers/sign_in", email, password);
+                }
+            });
             }
         });
 
@@ -89,6 +100,7 @@ public class LogInFragment extends Fragment {
     public void request(String url,String email,String password){
         new PostLogIn().execute(url,email,password);
     }
+
     //class gui request để đăng nhập
     private class PostLogIn extends AsyncTask<String,Integer,String> {
         //API web dang nhap
@@ -120,22 +132,10 @@ public class LogInFragment extends Fragment {
                 int code = body.getInt("code");
                 if (code == 1) {
                     token = body.getString("token");
-
                     tokenManager.setToken(token);
                     Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-
-                    //Đăng nhập thành công thì chuyển sang fragment film
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    HomeFragment frag = new HomeFragment();
-                    //Truyền chuỗi token cho frag
-                    Bundle bundle = new Bundle();
-                    bundle.putString("token",token);
-                    frag.setArguments(bundle);
-                    //Thay đổi fragment hiển thị
-                    fragmentTransaction.replace(R.id.frame,frag);
-                    fragmentTransaction.commit();
-
+                    //Đăng nhập thành công thì refresh lại thanh điều hướng
+                    ((MainActivity) getActivity()).refreshNavigation();
                 } else Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();

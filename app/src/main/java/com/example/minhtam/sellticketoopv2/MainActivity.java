@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        refreshNavigation();
+    }
 
-
+    public void refreshNavigation() {
         token = readCache();
         if(token.isEmpty()) {       //kiểm tra đã đăng nhập chưa
             //nếu chưa vào màn hình đăng nhập
@@ -57,11 +59,9 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             //hiện lên item menu
             showItem(R.id.nav_login);
-            showItem(R.id.nav_signin);
+//            showItem(R.id.nav_signin);
             //ẩn đi các item
             hideItem(R.id.nav_signout);
-
-
         }
         else{
             //nếu đã đăng nhập chuyển đến trang chủ
@@ -75,15 +75,9 @@ public class MainActivity extends AppCompatActivity
             //Thay đổi fragment hiển thị
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
-
-
             showItem(R.id.nav_signout);
-            //khi đã đăng nhập ẩn cái item đăng nhập trên menu đi
             hideItem(R.id.nav_login);
-            hideItem(R.id.nav_signin);
-
         }
-
     }
 
     @Override
@@ -155,19 +149,19 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
         }
-        else if (id == R.id.nav_signin) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            SignInFragment frag = new SignInFragment();
-            fragmentTransaction.replace(R.id.frame,frag);
-            fragmentTransaction.commit();
-        }
+//        else if (id == R.id.nav_signin) {
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            SignInFragment frag = new SignInFragment();
+//            fragmentTransaction.replace(R.id.frame,frag);
+//            fragmentTransaction.commit();
+//        }
         else if (id == R.id.nav_signout) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             new SignOut(MainActivity.this,fragmentManager);
             //hiện lên item menu
             showItem(R.id.nav_login);
-            showItem(R.id.nav_signin);
+//            showItem(R.id.nav_signin);
             //ẩn đi các item
             hideItem(R.id.nav_signout);
         }

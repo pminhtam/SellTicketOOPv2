@@ -12,4 +12,8 @@
     <item name="tagSeatRow" type="id"/>
     <item name="tagSeatColumn" type="id"/>
     <item name="tagSeatCost" type="id"/>
+    <string-array name="spinner_roles_array">
+        <item>Khách hàng</item>
+        <item>Người bán vé</item>
+    </string-array>
 </resources>

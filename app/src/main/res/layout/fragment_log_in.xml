@@ -9,48 +9,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
         >
-        <LinearLayout
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tai Khoan"/>
-            <EditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/edtEmailLogIn"
-                />
-        </LinearLayout>
-        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/edtEmailLogIn"
+            android:hint="Email"
+            />
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mat khau"/>
-            <EditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:id="@+id/edtPasswordLogIn"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:inputType="textPassword"
+            android:id="@+id/edtPasswordLogIn"
+            android:hint="Mật khẩu"
+            />
+        <Button
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dang nhap"
-                android:id="@+id/btnSubmit"
-                />
-        </LinearLayout>
-
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Đăng nhập"
+            android:id="@+id/btnSubmit"
+            />
+        <TextView android:id="@+id/txtCreateAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Chưa có tài khoản? Tạo mới"
+            android:textColor="#0f93f9"
+            android:gravity="center"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
