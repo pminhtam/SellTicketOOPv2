@@ -1,4 +1,4 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.home;
 
 
 import android.content.Context;
@@ -12,7 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.example.minhtam.sellticketoopv2.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,7 +90,6 @@ public class HomeFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
 //                Toast.makeText(getActivity(),s,Toast.LENGTH_LONG).show();
                 if(body !=null) {
-                    String data = body.getString("data");
                     JSONArray listfilms = body.getJSONArray("data");
                     // Phan header
                     ArrayList<ArrayList<ItemFilm>> itemsALL = new ArrayList<ArrayList<ItemFilm>>();
@@ -141,7 +141,7 @@ public class HomeFragment extends Fragment {
                     LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
                     rcFilm.setLayoutManager(layoutManager);
                     rcFilm.addItemDecoration(new SimpleDividerItemDecoration(context));
-                    adapter = new FilmAdapter(getActivity(), itemsALL,getFragmentManager());
+                    adapter = new FilmAdapter(getActivity(), itemsALL,getFragmentManager(),token);
                     rcFilm.setAdapter(adapter);
 
 //                Toast.makeText(FilmActivity.this,s,Toast.LENGTH_LONG).show();

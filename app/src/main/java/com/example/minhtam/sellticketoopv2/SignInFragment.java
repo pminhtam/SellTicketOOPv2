@@ -68,14 +68,14 @@ public class SignInFragment extends Fragment {
                 String name = edtNameSign.getText().toString();
 
                 Toast.makeText(getActivity(), "Email:" + email + "\n password:" + password, Toast.LENGTH_LONG).show();
-                new requestPostURL().execute("https://tickett.herokuapp.com/api/v1/customers/sign_up", name, email, password);
+                new PostSignIn().execute("https://tickett.herokuapp.com/api/v1/sign_up", name, email, password);
             }
         });
 
         return view;
     }
     //class gui request để đăng ký
-    private class requestPostURL extends AsyncTask<String,Integer,String> {
+    private class PostSignIn extends AsyncTask<String,Integer,String> {
         //API web dang nhap
         OkHttpClient okHttpClient = new OkHttpClient();
         @Override
@@ -84,6 +84,7 @@ public class SignInFragment extends Fragment {
                     .addFormDataPart("name",params[1])
                     .addFormDataPart("password",params[3])              //cac bien json de gui du lieu len
                     .addFormDataPart("email",params[2])
+                    .addFormDataPart("role","customer")
                     .setType(MultipartBody.FORM)
                     .build();
             Request request = new Request.Builder()                     //request len web

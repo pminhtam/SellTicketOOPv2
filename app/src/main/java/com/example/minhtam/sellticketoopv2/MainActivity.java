@@ -1,12 +1,8 @@
 package com.example.minhtam.sellticketoopv2;
 
-import android.content.ClipData;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
+import com.example.minhtam.sellticketoopv2.home.HomeFragment;
+import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -175,6 +175,10 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             ChooseSeatFragment frag = new ChooseSeatFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("token", token);
+            bundle.putString("id", "1");
+            frag.setArguments(bundle);
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
         }
@@ -188,6 +192,9 @@ public class MainActivity extends AppCompatActivity
     public void setToken(String token) {
         this.token = token;
         writeCache(token);
+    }
+    public String getToken(){
+        return token;
     }
     //luu token vao trong file
     private void writeCache(String token) {
