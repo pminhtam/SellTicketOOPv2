@@ -1,5 +1,6 @@
 package com.example.minhtam.sellticketoopv2.chooseseat;
 
+
 /**
  * Created by Minh Tam on 11/9/2017.
  */
@@ -10,7 +11,10 @@ public class ItemSeat {
     private boolean isChoose;
     private int price;
 
-
+    public ItemSeat(String row,String column){
+        this.row = row;
+        this.column = column;
+    }
     public String getRow() {
         return row;
     }

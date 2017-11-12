@@ -1,4 +1,4 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.film;
 
 
 import android.annotation.SuppressLint;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 
 import org.json.JSONArray;
@@ -48,7 +51,9 @@ public class FilmFragment extends Fragment {
     String token;
     ImageView imgFilmElement;
     TextView txtNameFilmElement;
-    ListView lvFilmElement;
+    ArrayList itemFilmElement;
+    RecyclerView rcFilmElement;
+    FilmElementAdapter adapter;
     public FilmFragment(Context context) {
         this.context = context;
         // Required empty public constructor
@@ -58,11 +63,19 @@ public class FilmFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_film, container, false);
+        itemFilmElement = new ArrayList();
         id = getArguments().getString("id");
         token = getArguments().getString("token");
         imgFilmElement = (ImageView) view.findViewById(R.id.imgFilmElement);
         txtNameFilmElement = (TextView) view.findViewById(R.id.txtNameFilmElement);
-        lvFilmElement = (ListView) view.findViewById(R.id.lvFilmElement);
+
+        //
+        rcFilmElement = (RecyclerView) view.findViewById(R.id.rcFilmElement);
+        rcFilmElement.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        rcFilmElement.setLayoutManager(layoutManager);
+        //
+
         Log.e("FilmFragment",token);
         Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
         getActivity().runOnUiThread(new Runnable() {
@@ -107,16 +120,28 @@ public class FilmFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
+
                     String data = body.getString("data");
                     JSONObject datajson = new JSONObject(data);
-                    String image = datajson.getString("image");
+
+                    //lây thông tin về bộ phim
                     String name = datajson.getString("name");
+                    String image = datajson.getString("image");
+                    String kind = datajson.getString("kind");
+                    String duration = datajson.getString("duration");
+                    String content = datajson.getString("content");
+                    /*
                     Glide.with(context)
                             .load("https://tickett.herokuapp.com" +image)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(imgFilmElement);
                     txtNameFilmElement.setText(name);
-                    Toast.makeText(getActivity(), "Xong roi", Toast.LENGTH_SHORT).show();
+                    */
+                    ItemFilmElementInfo itemFilmElementInfo = new ItemFilmElementInfo(name,image,kind,duration,content);
+                    itemFilmElement.add(0,itemFilmElementInfo);
+                    adapter = new FilmElementAdapter(context,itemFilmElement,token,getFragmentManager());
+                    rcFilmElement.setAdapter(adapter);
+                    Toast.makeText(getActivity(), "Xong noi dung film roi", Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -156,12 +181,17 @@ public class FilmFragment extends Fragment {
                 if (code == 1) {
                     Log.e("FilmFragment","Chay GetFilmSchedules xong roi nhé");
                     JSONArray listSchedule = body.getJSONArray("data");
-                    ArrayList<ItemFilmSchedules> itemFilmSchedules = new ArrayList<>();
-                    final ArrayList<String> strItem = new ArrayList<String>();
+//                    ArrayList<ItemFilmSchedules> itemFilmSchedules = new ArrayList<>();
+//                    final ArrayList<String> strItem = new ArrayList<String>();
+
                     for (int i=0;i<listSchedule.length();i++){
                         String id = listSchedule.getJSONObject(i).getString("id").toString();
-                        strItem.add(id);
+                        ItemFilmSchedules itemFilmSchedules = new ItemFilmSchedules(id);
+                        itemFilmElement.add(itemFilmSchedules);
+                        adapter.notifyDataSetChanged();
+//                        strItem.add(id);
                     }
+                    /*
                     ArrayAdapter adapter = new ArrayAdapter(context,android.R.layout.simple_list_item_1,strItem);
                     lvFilmElement.setAdapter(adapter);
                     lvFilmElement.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -179,6 +209,9 @@ public class FilmFragment extends Fragment {
 
                         }
                     });
+                    */
+
+
                     Toast.makeText(getActivity(), "Co Lít View", Toast.LENGTH_SHORT).show();
                 }
                 else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();

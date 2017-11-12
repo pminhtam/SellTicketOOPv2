@@ -16,7 +16,7 @@ import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.minhtam.sellticketoopv2.FilmFragment;
+import com.example.minhtam.sellticketoopv2.film.FilmFragment;
 import com.example.minhtam.sellticketoopv2.R;
 
 import java.util.ArrayList;

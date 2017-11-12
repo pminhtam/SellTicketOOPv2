@@ -1,4 +1,4 @@
-package com.example.minhtam.sellticketoopv2;
+package com.example.minhtam.sellticketoopv2.film;
 
 /**
  * Created by Minh Tam on 11/9/2017.

@@ -49,6 +49,7 @@ public class ChooseSeatFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_choose_seat, container, false);
         but = new ArrayList<>();
+        itemSeats = new ArrayList<>();
         listLinear = new ArrayList<>();
         LinearLayout layout1 = (LinearLayout) view.findViewById(R.id.layout1);
         listLinear.add(layout1);
@@ -76,28 +77,32 @@ public class ChooseSeatFragment extends Fragment {
 
         Log.e("ChooseSeatFragment",token);
 
-        for (nLinear=0;nLinear<listLinear.size();nLinear++) {
-            for(nBut=0;nBut<5;nBut++){
-                final Button button = new Button(getActivity());
-//                int stt = nBut*10 + nLinear;
-//                button.setText(String.valueOf(stt));
-//                button.setId((nBut*10 + nLinear)*1000);
 
-                button.setTag((nBut*10 + nLinear));
+//
+//        for (nLinear=0;nLinear<listLinear.size();nLinear++) {
+//            for(nBut=0;nBut<5;nBut++){
+//                final Button button = new Button(getActivity());
+////                int stt = nBut*10 + nLinear;
+////                button.setText(String.valueOf(stt));
+////                button.setId((nBut*10 + nLinear)*1000);
+//
+//                button.setTag((nBut*10 + nLinear));
+//
+//                listLinear.get(nLinear).addView(button);
+//                button.setBackgroundResource(R.drawable.sofa);
+//                but.add(button);
+////                button.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        String tag = button.getTag().toString();
+////                        int stt = Integer.parseInt(tag);
+////                        Toast.makeText(getActivity(),"cot: "+stt%10 + "\n hang : "+abc[stt/10],Toast.LENGTH_SHORT).show();
+////                    }
+////                });
+//            }
+//        }
 
-                listLinear.get(nLinear).addView(button);
-                button.setBackgroundResource(R.drawable.sofa);
-                but.add(button);
-//                button.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        String tag = button.getTag().toString();
-//                        int stt = Integer.parseInt(tag);
-//                        Toast.makeText(getActivity(),"cot: "+stt%10 + "\n hang : "+abc[stt/10],Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-            }
-        }
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -139,19 +144,48 @@ public class ChooseSeatFragment extends Fragment {
                     seats = data.getJSONArray("seats");
                     Toast.makeText(getActivity(), seats.getString(0), Toast.LENGTH_SHORT).show();
                     Log.e("ChooseSeatFragment", seats.getString(1));
-                    nBut = 0;
-                    while(nBut<10){
-                        but.get(nBut).setOnClickListener(new View.OnClickListener() {
+                    Log.e("ChooseSeatFragment", "Dao dai cua du lieu seats la " + seats.length());
+                    Log.e("ChooseSeatFragment", seats.getJSONArray(1).getString(0));
+
+                    int i = 0;
+                    for(i=0;i<seats.length();i++){
+                        JSONArray seat = seats.getJSONArray(i);
+                        Log.e("ChooseSeatFragment", seats.getJSONArray(i).getString(0));
+                        String row = seat.getString(0);
+                        Log.e("ChooseSeatFragment", "Row la " +row);
+
+                        String column = seat.getString(1);
+                        Log.e("ChooseSeatFragment", "column la " + column);
+
+                        Log.e("ChooseSeatFragment", "column la " + column);
+
+                        Log.e("ChooseSeatFragment", "column la " + column);
+
+                        ItemSeat itemSeat = new ItemSeat(row,column);
+                        itemSeats.add(itemSeat);
+                        int rowSeat = i%10;
+                        Log.e("ChooseSeatFragment", "rowSeat la " + rowSeat);
+
+                        int columnSeat = i/10;
+                        Log.e("ChooseSeatFragment", "columnSeat la " + columnSeat);
+
+                        final Button button = new Button(getActivity());
+                        Log.e("ChooseSeatFragment", "Tao Button la " );
+
+                        button.setBackgroundResource(R.drawable.sofa);
+                        button.setTag(R.id.tagSeatColumn,row);
+                        button.setTag(R.id.tagSeatRow,column);
+                        listLinear.get(columnSeat).addView(button);
+                        Log.e("ChooseSeatFragment","Vua them ghe hang "+row + "  Cot:"+column);
+                        button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-//                                    final String tag = seats.getString(nBut).toString();
-                                    int n =nBut;
-                                    nBut++;
-                                    Toast.makeText(getActivity(),String.valueOf(n), Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(getActivity(),"Cot la : "+button.getTag(R.id.tagSeatColumn)+"\n Hang la :"+ button.getTag(R.id.tagSeatRow),Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
+
+
                 }
                 else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
