@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
@@ -169,6 +170,17 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             ChooseSeatFragment frag = new ChooseSeatFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("token", token);
+            bundle.putString("id", "1");
+            frag.setArguments(bundle);
+            fragmentTransaction.replace(R.id.frame,frag);
+            fragmentTransaction.commit();
+        }
+        else if (id ==R.id.nav_analyze){     //thử nghiệm
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            AnalyzeFragment frag = new AnalyzeFragment();
             Bundle bundle = new Bundle();
             bundle.putString("token", token);
             bundle.putString("id", "1");

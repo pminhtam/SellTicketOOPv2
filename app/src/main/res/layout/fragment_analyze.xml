@@ -5,9 +5,25 @@
     tools:context="com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAge"
+            android:text="Thống kê độ tuổi khách hang"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSex"
+            android:text="Thống kê giới tính khách hàng"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSale"
+            android:text="Thống kê lượng vé bán được"/>
+    </LinearLayout>
 
 </FrameLayout>

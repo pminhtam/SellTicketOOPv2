@@ -1196,6 +1196,10 @@
         "source": "C:\\Users\\Minh Tam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-24.2.1.aar\\8765cea3f35b35cbed49cbe6a7e62a1b\\res\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_age_analyze.xml.flat",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\layout\\fragment_age_analyze.xml"
+    },
+    {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "C:\\Users\\Minh Tam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-24.2.1.aar\\8765cea3f35b35cbed49cbe6a7e62a1b\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
     },
@@ -1272,6 +1276,10 @@
         "source": "C:\\Users\\Minh Tam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-24.2.1.aar\\8765cea3f35b35cbed49cbe6a7e62a1b\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_analyze.xml.flat",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\layout\\fragment_analyze.xml"
+    },
+    {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_seekbar_thumb_material.xml.flat",
         "source": "C:\\Users\\Minh Tam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-24.2.1.aar\\8765cea3f35b35cbed49cbe6a7e62a1b\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
@@ -1322,6 +1330,10 @@
     {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\Minh Tam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-24.2.1.aar\\8765cea3f35b35cbed49cbe6a7e62a1b\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_sale_analyze.xml.flat",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\layout\\fragment_sale_analyze.xml"
     },
     {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -1438,6 +1450,10 @@
     {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Minh Tam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-24.2.1.aar\\8765cea3f35b35cbed49cbe6a7e62a1b\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_sex_analyze.xml.flat",
+        "source": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\src\\main\\res\\layout\\fragment_sex_analyze.xml"
     },
     {
         "merged": "D:\\google_driver\\Code\\android\\SellTicketOOPv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sofa.png.flat",

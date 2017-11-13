@@ -9,9 +9,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <item name="tagSeatRow" type="id"/>
-    <item name="tagSeatColumn" type="id"/>
-    <item name="tagSeatCost" type="id"/>
+    <item name="tagSeatRow" type="id" />
+    <item name="tagSeatColumn" type="id" />
+    <item name="tagSeatCost" type="id" />
+    <item name="tagSeatIsChoose" type="id" />
     <string-array name="spinner_roles_array">
         <item>Khách hàng</item>
         <item>Người bán vé</item>
