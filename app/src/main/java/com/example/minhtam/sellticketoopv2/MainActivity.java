@@ -31,17 +31,19 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,UserDataManager {
 
     private String token;
+    private String userData;
+    NavigationView nav_view;
+    public String userName;
+    public String userMoney;
+    public String userRole;
+
+    public String getToken() {
+        return token;
+    }
 
     public void setToken(String token) {
         this.token = token;
     }
-    public String getToken(){
-        return token;
-    }
-    private String userData;
-    NavigationView nav_view;
-    String userName;
-    String userMoney;
 
     public String getUserName() {
         return userName;
@@ -59,6 +61,17 @@ public class MainActivity extends AppCompatActivity
         this.userMoney = userMoney;
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+    public boolean isCustomer() {
+        return this.userRole.equals("customer");
+    }
     TextView txtUserName;
     TextView txtUserMoney;
 
@@ -268,6 +281,11 @@ public class MainActivity extends AppCompatActivity
             hideItem(R.id.nav_login);
             showItem(R.id.nav_signout);
         }
+        if (isCustomer()) {
+            hideItem(R.id.nav_analyze);
+        } else {
+            showItem(R.id.nav_analyze);
+        }
     }
 
     public void getUserDataFromToken() {
@@ -277,6 +295,7 @@ public class MainActivity extends AppCompatActivity
             JSONObject dataJson = body.getJSONObject("data");
             setUserName(dataJson.getString("name"));
             setUserMoney(dataJson.getString("email"));
+            setUserRole(dataJson.getString("role"));
         } catch (Exception e) {
             e.printStackTrace();
             token = "";

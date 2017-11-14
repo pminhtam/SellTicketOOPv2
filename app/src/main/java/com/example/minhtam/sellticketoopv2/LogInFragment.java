@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,6 +129,7 @@ public class LogInFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             try {
+                Log.i("info", s);
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
