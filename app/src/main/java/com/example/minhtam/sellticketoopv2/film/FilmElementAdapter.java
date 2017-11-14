@@ -56,7 +56,7 @@ public class FilmElementAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 viewHolderInfo.txtNameFilmElement.setText(itemFilmElementInfo.getName());
                 String image = itemFilmElementInfo.getImage();
                 Glide.with(context)
-                        .load("https://tickett.herokuapp.com" +image)
+                        .load("http://tickett.cloudapp.net" +image)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolderInfo.imgFilmElement);
                 break;

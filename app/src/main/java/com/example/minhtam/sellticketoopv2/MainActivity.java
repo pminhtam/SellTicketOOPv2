@@ -11,11 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,10 +28,34 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,TokenManager {
+        implements NavigationView.OnNavigationItemSelectedListener,UserDataManager {
 
-    String token = "";
+    String token;
+    String userData;
     NavigationView nav_view;
+    String userName;
+    String userMoney;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserMoney() {
+        return userMoney;
+    }
+
+    public void setUserMoney(String userMoney) {
+        this.userMoney = userMoney;
+    }
+
+    TextView txtUserName;
+    TextView txtUserMoney;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +67,22 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View v = navigationView.getHeaderView(0);
+        txtUserName = (TextView) v.findViewById(R.id.txtUserName);
+        txtUserMoney = (TextView) v.findViewById(R.id.txtUserMoney);
         refreshNavigation();
     }
 
     public void refreshNavigation() {
-        token = readCache();
-        if(token.isEmpty()) {       //kiểm tra đã đăng nhập chưa
+        userData = readCache();
+        getUserDataFromToken();
+        setNavigationDetail();
+        if(userData.isEmpty()) {       //kiểm tra đã đăng nhập chưa
             //nếu chưa vào màn hình đăng nhập
             // Khoi tao LogIn thêm vào màn hình chính
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -58,11 +91,6 @@ public class MainActivity extends AppCompatActivity
             //Thay đổi fragment hiển thị
             fragmentTransaction.add(R.id.frame, frag);
             fragmentTransaction.commit();
-            //hiện lên item menu
-            showItem(R.id.nav_login);
-//            showItem(R.id.nav_signin);
-            //ẩn đi các item
-            hideItem(R.id.nav_signout);
         }
         else{
             //nếu đã đăng nhập chuyển đến trang chủ
@@ -77,7 +105,6 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
             showItem(R.id.nav_signout);
-            hideItem(R.id.nav_login);
         }
     }
 
@@ -158,13 +185,8 @@ public class MainActivity extends AppCompatActivity
 //            fragmentTransaction.commit();
 //        }
         else if (id == R.id.nav_signout) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            new SignOut(MainActivity.this,fragmentManager);
-            //hiện lên item menu
-            showItem(R.id.nav_login);
-//            showItem(R.id.nav_signin);
-            //ẩn đi các item
-            hideItem(R.id.nav_signout);
+            SignoutDialog myDialog = new SignoutDialog();
+            myDialog.show(getFragmentManager(), "123");
         }
         else if (id ==R.id.nav_chooseSeat){     //thử nghiệm
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -194,18 +216,13 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void setToken(String token) {
-        this.token = token;
-        writeCache(token);
-    }
     public String getToken(){
         return token;
     }
     //luu token vao trong file
     private void writeCache(String token) {
         File pathCacheDir = getCacheDir();
-        String strCacheFIleName = "token.cache";
+        String strCacheFIleName = "userdata.cache";
         String strFileContent = token;
         File newCacheFile = new File(pathCacheDir,strCacheFIleName);
         try {
@@ -220,7 +237,7 @@ public class MainActivity extends AppCompatActivity
     //Đọc cache
     private String readCache() {
         File pathCacheDir = getCacheDir();
-        String strCacheFileName = "token.cache";
+        String strCacheFileName = "userdata.cache";
         File newCacheFile = new File(pathCacheDir,strCacheFileName);
         try {
             Scanner sc = new Scanner(newCacheFile);
@@ -235,6 +252,36 @@ public class MainActivity extends AppCompatActivity
         }
         return "";
     }
+
+    public void setNavigationDetail() {
+        txtUserName.setText(getUserName());
+        txtUserMoney.setText(getUserMoney());
+        if (getUserName().equals("")) { //Chua dang nhap
+            //hiện lên item menu
+            showItem(R.id.nav_login);
+            //ẩn đi các item
+            hideItem(R.id.nav_signout);
+        } else {
+            hideItem(R.id.nav_login);
+            showItem(R.id.nav_signout);
+        }
+    }
+
+    public void getUserDataFromToken() {
+        try {
+            JSONObject body = new JSONObject(userData);
+            token = body.getString("token");
+            JSONObject dataJson = body.getJSONObject("data");
+            setUserName(dataJson.getString("name"));
+            setUserMoney(dataJson.getString("email"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            token = "";
+            setUserName("");
+            setUserMoney("");
+        }
+
+    }
     private void hideItem(int id){
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = nav_view.getMenu();
@@ -244,5 +291,11 @@ public class MainActivity extends AppCompatActivity
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = nav_view.getMenu();
         nav_Menu.findItem(id).setVisible(true);
+    }
+
+    @Override
+    public void setUserData(String userData) {
+        this.userData = userData;
+        writeCache(userData);
     }
 }

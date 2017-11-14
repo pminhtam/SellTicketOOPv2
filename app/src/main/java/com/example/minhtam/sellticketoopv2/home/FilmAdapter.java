@@ -55,15 +55,15 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ViewHolder0 viewHolder0 = (ViewHolder0) holder;
                 //load hình ảnh
                 Glide.with(context)
-                    .load("https://tickett.herokuapp.com" + items.get(position).get(0).getImage())
+                    .load("http://tickett.cloudapp.net" + items.get(position).get(0).getImage())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(viewHolder0.imgFilmsHeader0);
                 Glide.with(context)
-                        .load("https://tickett.herokuapp.com" + items.get(position).get(1).getImage())
+                        .load("http://tickett.cloudapp.net" + items.get(position).get(1).getImage())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolder0.imgFilmsHeader1);
                 Glide.with(context)
-                        .load("https://tickett.herokuapp.com" + items.get(position).get(2).getImage())
+                        .load("http://tickett.cloudapp.net" + items.get(position).get(2).getImage())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolder0.imgFilmsHeader2);
                 //
@@ -78,6 +78,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
                         bundle.putString("token",token);
+                        fragmentTransaction.addToBackStack(null);
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -92,6 +93,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
                         bundle.putString("token",token);
+                        fragmentTransaction.addToBackStack(null);
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -106,6 +108,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
                         bundle.putString("token",token);
+                        fragmentTransaction.addToBackStack(null);
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }

@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetFilm().execute("https://tickett.herokuapp.com/api/v1/customers/films","1");
+                new GetFilm().execute("http://tickett.cloudapp.net/api/v1/customers/films","1");
             }
         });
         return view;

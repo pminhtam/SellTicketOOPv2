@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 public class SignOut {
     // Đăng xuất
     private Context context;
-    TokenManager tokenManager;
+    UserDataManager userDataManager;
     FragmentManager fragmentManager;
     public SignOut(Context context,FragmentManager fragmentManager){
         this.context = context;
@@ -20,8 +20,8 @@ public class SignOut {
 
     }
     private void DeleteCache(){
-        tokenManager = (TokenManager) context;
-        tokenManager.setToken("");              //xóa token
+        userDataManager = (UserDataManager) context;
+        userDataManager.setUserData("");              //xóa token
         //Quay lại màn hình đăng nhập
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

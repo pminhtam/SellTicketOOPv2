@@ -13,22 +13,22 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="fitXY"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/user" />
 
     <TextView
+        android:id="@+id/txtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Tên người dùng"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtUserMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Số tiền còn lại" />

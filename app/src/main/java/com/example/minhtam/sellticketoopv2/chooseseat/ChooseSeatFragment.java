@@ -106,7 +106,7 @@ public class ChooseSeatFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetSeat().execute("https://tickett.herokuapp.com/api/v1/customers/schedules/" + id);
+                new GetSeat().execute("http://tickett.cloudapp.net/api/v1/customers/schedules/" + id);
             }
         });
 

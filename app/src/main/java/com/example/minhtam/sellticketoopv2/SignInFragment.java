@@ -35,12 +35,12 @@ import okhttp3.Response;
  */
 public class SignInFragment extends Fragment {
     //Đăng ký
-    TokenManager tokenManager;
+    UserDataManager userDataManager;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof TokenManager){
-            tokenManager = (TokenManager) context;
+        if(context instanceof UserDataManager){
+            userDataManager = (UserDataManager) context;
 
         }
         else{
@@ -94,7 +94,7 @@ public class SignInFragment extends Fragment {
                 else role = "customer";
 
                 Toast.makeText(getActivity(), "Đang gửi", Toast.LENGTH_SHORT).show();
-                new PostSignIn().execute("https://tickett.herokuapp.com/api/v1/sign_up", name, email, password, role);
+                new PostSignIn().execute("http://tickett.cloudapp.net/api/v1/sign_up", name, email, password, role);
             }
         });
 
