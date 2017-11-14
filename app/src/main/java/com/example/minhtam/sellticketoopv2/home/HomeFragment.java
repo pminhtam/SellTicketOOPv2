@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 
 import org.json.JSONArray;
@@ -54,7 +55,7 @@ public class HomeFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetFilm().execute("http://tickett.cloudapp.net/api/v1/customers/films","1");
+            new GetFilm().execute(ApiUrl.getFilms("1"));
             }
         });
         return view;
@@ -66,8 +67,7 @@ public class HomeFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            String page = params[1];
-            String url = params[0]+"?page="+page;
+            String url = params[0];
             Request request = new Request.Builder()                     //request len web
                     .url(url)
                     .addHeader("Authorization",token)

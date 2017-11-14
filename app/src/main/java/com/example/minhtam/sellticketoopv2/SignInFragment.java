@@ -94,7 +94,7 @@ public class SignInFragment extends Fragment {
                 else role = "customer";
 
                 Toast.makeText(getActivity(), "Đang gửi", Toast.LENGTH_SHORT).show();
-                new PostSignIn().execute("http://tickett.cloudapp.net/api/v1/sign_up", name, email, password, role);
+                new PostSignIn().execute(ApiUrl.signUp(), name, email, password, role);
             }
         });
 

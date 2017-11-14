@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 
 import org.json.JSONArray;
@@ -48,7 +49,7 @@ public class PlaceFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new PlaceFragment.GetPlaces().execute("http://tickett.cloudapp.net/api/v1/customers/locations","1");
+            new PlaceFragment.GetPlaces().execute(ApiUrl.getPlaces("1"));
             }
         });
         return view;
@@ -60,8 +61,7 @@ public class PlaceFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            String page = params[1];
-            String url = params[0]+"?page="+page;
+            String url = params[0];
             Request request = new Request.Builder()                     //request len web
                     .url(url)
                     .addHeader("Authorization",token)

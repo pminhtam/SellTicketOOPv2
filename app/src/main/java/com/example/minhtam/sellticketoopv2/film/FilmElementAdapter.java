@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 
@@ -56,7 +57,7 @@ public class FilmElementAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 viewHolderInfo.txtNameFilmElement.setText(itemFilmElementInfo.getName());
                 String image = itemFilmElementInfo.getImage();
                 Glide.with(context)
-                        .load("http://tickett.cloudapp.net" +image)
+                        .load(ApiUrl.URL +image)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolderInfo.imgFilmElement);
                 break;

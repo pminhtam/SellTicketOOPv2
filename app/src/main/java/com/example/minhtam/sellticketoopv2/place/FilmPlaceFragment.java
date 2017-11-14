@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.home.ItemFilm;
 
@@ -52,7 +53,7 @@ public class FilmPlaceFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new FilmPlaceFragment.GetFilmPlaces().execute("http://tickett.cloudapp.net/api/v1/customers/schedules",location_id);
+            new FilmPlaceFragment.GetFilmPlaces().execute(ApiUrl.getPlaceSchedules(location_id, "1"));
             }
         });
         return view;
@@ -63,9 +64,7 @@ public class FilmPlaceFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-
-            String page = params[1];
-            String url = params[0]+"?page=1&location_id="+location_id;
+            String url = params[0];
             Request request = new Request.Builder()                     //request len web
                     .url(url)
                     .addHeader("Authorization",token)
