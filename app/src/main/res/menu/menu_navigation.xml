@@ -14,10 +14,6 @@
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_menu_login"
             android:title="Đăng nhập" />
-        <!--<item-->
-            <!--android:id="@+id/nav_signin"-->
-            <!--android:icon="@drawable/ic_menu_login"-->
-            <!--android:title="Đăng ký" />-->
         <item
             android:id="@+id/nav_chooseSeat"
             android:icon="@drawable/ic_menu_share"

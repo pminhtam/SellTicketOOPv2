@@ -135,13 +135,8 @@ public class SignInFragment extends Fragment {
                 int code = body.getInt("code");
                 if (code == 1) {
                     Toast.makeText(getActivity(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                    //Đăng nhập thành công thì chuyển sang fragment film
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    LogInFragment frag = new LogInFragment();
-
-                    fragmentTransaction.replace(R.id.frame,frag);
-                    fragmentTransaction.commit();
+                    //Đăng ky thành công thì chuyển sang fragment login
+                    ((MainActivity) getActivity()).moveToLogInFragment();
                 } else Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -149,5 +144,4 @@ public class SignInFragment extends Fragment {
             }
         }
     }
-    //
 }

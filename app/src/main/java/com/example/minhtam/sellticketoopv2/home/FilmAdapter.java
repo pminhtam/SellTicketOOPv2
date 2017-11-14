@@ -33,7 +33,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     FragmentManager fragmentManager;
     FilmsRowAdapter adapter;
     String token;
-    public FilmAdapter(Context context,ArrayList<ArrayList<ItemFilm>> items,FragmentManager fragmentManager,String token){
+    public FilmAdapter(Context context, ArrayList<ArrayList<ItemFilm>> items, FragmentManager fragmentManager, String token){
         this.context = context;
         this.items = items;
         this.fragmentManager = fragmentManager;
