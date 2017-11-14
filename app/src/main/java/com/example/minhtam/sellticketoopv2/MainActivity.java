@@ -280,11 +280,11 @@ public class MainActivity extends AppCompatActivity
         } else {
             hideItem(R.id.nav_login);
             showItem(R.id.nav_signout);
-        }
-        if (isCustomer()) {
-            hideItem(R.id.nav_analyze);
-        } else {
-            showItem(R.id.nav_analyze);
+            if (isCustomer()) {
+                hideItem(R.id.nav_analyze);
+            } else {
+                showItem(R.id.nav_analyze);
+            }
         }
     }
 

@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 
 import org.json.JSONArray;
@@ -106,7 +107,7 @@ public class ChooseSeatFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetSeat().execute("http://tickett.cloudapp.net/api/v1/customers/schedules/" + id);
+            new GetSeat().execute(ApiUrl.getSchedule(id));
             }
         });
 
@@ -121,7 +122,7 @@ public class ChooseSeatFragment extends Fragment {
         protected String doInBackground(String... strings) {
             String url = strings[0];
             Request request = new Request.Builder()
-                    .url(url).addHeader("Authorization",token).build();
+                .url(url).addHeader("Authorization",token).build();
             try {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();

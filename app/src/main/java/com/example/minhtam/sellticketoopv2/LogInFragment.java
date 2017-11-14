@@ -89,7 +89,7 @@ public class LogInFragment extends Fragment {
                 String password = edtPasswordLogIn.getText().toString();
                 String email = edtEmailLogIn.getText().toString();
                 Toast.makeText(getActivity(), "Đang gửi", Toast.LENGTH_LONG).show();
-                request("http://tickett.cloudapp.net/api/v1/customers/sign_in", email, password);
+                request(ApiUrl.signIn(), email, password);
                 }
             });
             }

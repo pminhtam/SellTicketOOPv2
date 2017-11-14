@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 
@@ -81,14 +82,14 @@ public class FilmFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetFilmElement().execute("http://tickett.cloudapp.net/api/v1/customers/films/" + id);
+                new GetFilmElement().execute(ApiUrl.getFilm(id));
             }
         });
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Log.e("FilmFragment","Chay GetFilmSchedules");
-                new GetFilmSchedules().execute("http://tickett.cloudapp.net/api/v1/customers/schedules",id);
+                new GetFilmSchedules().execute(ApiUrl.getFilmSchedules(id, "1"));
             }
         });
 
@@ -159,8 +160,7 @@ public class FilmFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... strings) {
-            String film_id = strings[1];
-            String url = strings[0] + "?film_id="+film_id;
+            String url = strings[0];
             Request request = new Request.Builder()
                     .url(url).addHeader("Authorization",token).build();
             try {

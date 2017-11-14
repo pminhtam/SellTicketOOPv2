@@ -16,6 +16,7 @@ import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.film.FilmFragment;
 import com.example.minhtam.sellticketoopv2.R;
 
@@ -55,15 +56,15 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ViewHolder0 viewHolder0 = (ViewHolder0) holder;
                 //load hình ảnh
                 Glide.with(context)
-                    .load("http://tickett.cloudapp.net" + items.get(position).get(0).getImage())
+                    .load(ApiUrl.URL + items.get(position).get(0).getImage())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(viewHolder0.imgFilmsHeader0);
                 Glide.with(context)
-                        .load("http://tickett.cloudapp.net" + items.get(position).get(1).getImage())
+                        .load(ApiUrl.URL + items.get(position).get(1).getImage())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolder0.imgFilmsHeader1);
                 Glide.with(context)
-                        .load("http://tickett.cloudapp.net" + items.get(position).get(2).getImage())
+                        .load(ApiUrl.URL + items.get(position).get(2).getImage())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(viewHolder0.imgFilmsHeader2);
                 //
