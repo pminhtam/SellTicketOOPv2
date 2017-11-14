@@ -8,6 +8,10 @@ public class ItemPlace {
     private String name;
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
     public ItemPlace(String name, int id) {
         this.name = name;
         this.id = id;

@@ -30,8 +30,15 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,UserDataManager {
 
-    String token;
-    String userData;
+    private String token;
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+    public String getToken(){
+        return token;
+    }
+    private String userData;
     NavigationView nav_view;
     String userName;
     String userMoney;
@@ -104,7 +111,6 @@ public class MainActivity extends AppCompatActivity
             //Thay đổi fragment hiển thị
             fragmentTransaction.replace(R.id.frame,frag);
             fragmentTransaction.commit();
-            showItem(R.id.nav_signout);
         }
     }
 
@@ -216,9 +222,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public String getToken(){
-        return token;
-    }
     //luu token vao trong file
     private void writeCache(String token) {
         File pathCacheDir = getCacheDir();
