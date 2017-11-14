@@ -81,14 +81,14 @@ public class FilmFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new GetFilmElement().execute("https://tickett.herokuapp.com/api/v1/customers/films/" + id);
+                new GetFilmElement().execute("http://tickett.cloudapp.net/api/v1/customers/films/" + id);
             }
         });
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Log.e("FilmFragment","Chay GetFilmSchedules");
-                new GetFilmSchedules().execute("https://tickett.herokuapp.com/api/v1/customers/schedules",id);
+                new GetFilmSchedules().execute("http://tickett.cloudapp.net/api/v1/customers/schedules",id);
             }
         });
 

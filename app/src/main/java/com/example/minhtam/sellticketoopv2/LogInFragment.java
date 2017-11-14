@@ -35,13 +35,13 @@ import okhttp3.Response;
 public class LogInFragment extends Fragment {
 
     //class đăng nhập
-    TokenManager tokenManager;
+    UserDataManager userDataManager;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof TokenManager){
-            tokenManager = (TokenManager) context;
+        if(context instanceof UserDataManager){
+            userDataManager = (UserDataManager) context;
 
         }
         else{
@@ -88,7 +88,7 @@ public class LogInFragment extends Fragment {
                 String password = edtPasswordLogIn.getText().toString();
                 String email = edtEmailLogIn.getText().toString();
                 Toast.makeText(getActivity(), "Đang gửi", Toast.LENGTH_LONG).show();
-                request("https://tickett.herokuapp.com/api/v1/customers/sign_in", email, password);
+                request("http://tickett.cloudapp.net/api/v1/customers/sign_in", email, password);
                 }
             });
             }
@@ -131,8 +131,8 @@ public class LogInFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
-                    token = body.getString("token");
-                    tokenManager.setToken(token);
+//                    token = body.getString("token");
+                    userDataManager.setUserData(s);
                     Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     //Đăng nhập thành công thì refresh lại thanh điều hướng
                     ((MainActivity) getActivity()).refreshNavigation();

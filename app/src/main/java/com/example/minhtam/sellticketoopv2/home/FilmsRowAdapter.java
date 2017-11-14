@@ -47,7 +47,7 @@ public class FilmsRowAdapter extends RecyclerView.Adapter<FilmsRowAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.txtNameFilm.setText(itemsRow.get(position).getName());
         Glide.with(context)
-                .load("https://tickett.herokuapp.com" + itemsRow.get(position).getImage())
+                .load("http://tickett.cloudapp.net" + itemsRow.get(position).getImage())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgFilm);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +62,7 @@ public class FilmsRowAdapter extends RecyclerView.Adapter<FilmsRowAdapter.ViewHo
                 bundle.putString("id",id);
                 bundle.putString("token",token);
                 frag.setArguments(bundle);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
