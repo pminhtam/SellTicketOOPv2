@@ -43,7 +43,6 @@ public class LogInFragment extends Fragment {
         super.onAttach(context);
         if(context instanceof UserDataManager){
             userDataManager = (UserDataManager) context;
-
         }
         else{
             throw new RuntimeException(context.toString() + " must implement onViewSelected");
@@ -74,9 +73,7 @@ public class LogInFragment extends Fragment {
         // Click Create Account
         txtCreateAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frame, new SignInFragment());
-                fragmentTransaction.commit();
+                ((MainActivity) getActivity()).moveToSignInFragment();
             }
         });
 
@@ -133,16 +130,15 @@ public class LogInFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
-//                    token = body.getString("token");
                     userDataManager.setUserData(s);
                     Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     //Đăng nhập thành công thì refresh lại thanh điều hướng
-                    ((MainActivity) getActivity()).refreshNavigation();
+                    ((MainActivity) getActivity()).setNavigationDetail();
+                    ((MainActivity) getActivity()).moveToHomeFragment();
                 } else Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
-    //
 }

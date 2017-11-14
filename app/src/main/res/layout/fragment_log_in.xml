@@ -1,53 +1,58 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.minhtam.sellticketoopv2.LogInFragment">
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.example.minhtam.sellticketoopv2.LogInFragment">-->
 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fafafa"
         android:orientation="vertical"
-        android:paddingTop="56dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        >
+        android:paddingTop="56dp">
+
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:id="@+id/edtEmailLogIn"
-            android:hint="Email"
-            />
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:inputType="textPassword"
+            android:layout_marginTop="8dp"
+            android:hint="Email" />
+
+        <EditText
             android:id="@+id/edtPasswordLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:hint="Mật khẩu"
-            />
+            android:inputType="textPassword" />
+
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:text="Đăng nhập"
             android:id="@+id/btnSubmit"
-            />
-        <TextView android:id="@+id/txtCreateAccount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:text="Đăng nhập" />
+
+        <TextView
+            android:id="@+id/txtCreateAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
             android:text="Chưa có tài khoản? Tạo mới"
             android:textColor="#0f93f9"
-            android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
-
-</FrameLayout>
+</ScrollView>
+<!--</FrameLayout>-->

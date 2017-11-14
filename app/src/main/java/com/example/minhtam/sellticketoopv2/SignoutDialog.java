@@ -21,8 +21,9 @@ public class SignoutDialog extends DialogFragment {
                 // An OK button that does nothing
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        new SignOut(activity, activity.getSupportFragmentManager());
-                        //hiện lên item menu
+                    activity.setUserData("");
+                    activity.setNavigationDetail();
+                    activity.moveToLogInFragment();
                     }
                 })
                 // A "Cancel" button that does nothing
