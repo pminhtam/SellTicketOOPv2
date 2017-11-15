@@ -38,4 +38,8 @@ public class ApiUrl {
     public static String getSchedule(String scheduleId) {
         return URL + "api/v1/customers/schedules/" + scheduleId;
     }
+
+    public static String bookTicket(String ticketId) {
+        return URL + "/api/v1/customers/tickets/book/" + ticketId;
+    }
 }

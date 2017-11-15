@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
+import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
 
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity
         else if (id ==R.id.nav_chooseSeat){     //thử nghiệm
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            ChooseSeatFragment frag = new ChooseSeatFragment();
+            ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
             Bundle bundle = new Bundle();
             bundle.putString("token", token);
             bundle.putString("id", "1");
