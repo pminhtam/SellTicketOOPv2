@@ -19,6 +19,10 @@ public class SeatAdapter extends BaseAdapter {
     private final Context mContext;
     private final ArrayList<ItemSeat> seats;
     private final ArrayList<Integer> selectedSeats = new ArrayList<Integer>();
+    private final ArrayList<Integer> selectedIds = new ArrayList<Integer>();
+    public ArrayList<Integer> getSelectedIds() {
+        return selectedIds;
+    }
 
     public ArrayList<Integer> getSelectedSeats() {
         return selectedSeats;
@@ -44,12 +48,14 @@ public class SeatAdapter extends BaseAdapter {
         return 0;
     }
 
-    public void addSelectedItem(int selectedItem) {
-        this.selectedSeats.add(selectedItem);
+    public void addSelectedItem(int selectedId, int selectedSeat) {
+        this.selectedSeats.add(selectedSeat);
+        this.selectedIds.add(selectedId);
         notifyDataSetChanged();
     }
-    public void removeSelectedItem(int selectedItem) {
-        this.selectedSeats.remove((Integer)selectedItem);
+    public void removeSelectedItem(int selectedId, int selectedSeat) {
+        this.selectedSeats.remove((Integer)selectedSeat);
+        this.selectedIds.remove((Integer)selectedId);
         notifyDataSetChanged();
     }
 
@@ -71,7 +77,7 @@ public class SeatAdapter extends BaseAdapter {
             imageView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     DeleteSelectionDialog dialog = new DeleteSelectionDialog();
-                    dialog.sendItem(SeatAdapter.this, position);
+                    dialog.sendItem(SeatAdapter.this, position, seat);
                     dialog.show(((MainActivity)mContext).getFragmentManager(), "123");
                 }
             });
@@ -88,9 +94,11 @@ public class SeatAdapter extends BaseAdapter {
                     SeatDialog dialog = new SeatDialog();
                     dialog.sendIteamSeatSelected(SeatAdapter.this, position, seat);
                     dialog.show(((MainActivity) mContext).getFragmentManager(), "123");
+
                 }
             });
         }
         return imageView;
     }
+
 }

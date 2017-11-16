@@ -1,6 +1,10 @@
 package com.example.minhtam.sellticketoopv2.chooseseat;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -70,10 +74,11 @@ public class ChooseSeatFragmentDemo extends Fragment{
             int totalMoney = 0;
             @Override
             public void onClick(View view) {
+                final ArrayList<Integer> selectedIds = seatsAdapter.getSelectedIds();
                 final ArrayList<Integer> selectedSeats = seatsAdapter.getSelectedSeats();
                 MainActivity activity = (MainActivity)getActivity();
-                for (Integer selectedId : selectedSeats) {
-                    totalMoney += items.get(selectedId).getPrice();
+                for (Integer selectedSeat : selectedSeats) {
+                    totalMoney += items.get(selectedSeat).getPrice();
                 }
                 Log.i("info", totalMoney + " " + activity.getUserMoney() + " " +(totalMoney > activity.getUserMoney()));
                 if (totalMoney > activity.getUserMoney()) {
@@ -83,12 +88,11 @@ public class ChooseSeatFragmentDemo extends Fragment{
 //                        seatsAdapter.removeSelectedItem(selectedId);
 //                    }
                 } else {
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                        new ChooseSeatFragmentDemo.BookSeat(selectedSeats).execute(ApiUrl.bookTicket());
-                        }
-                    });
+                    ConfirmDialog dialog = new ConfirmDialog();
+                    Bundle bundle = new Bundle();
+                    bundle.putIntegerArrayList("selectedIds", selectedIds);
+                    dialog.setArguments(bundle);
+                    dialog.show(activity.getFragmentManager(), "123");
                 }
             }
         });
@@ -163,11 +167,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
             String url = strings[0];
             Log.i("info", "BookSeat:"+strings[0]);
             RequestBody requestBody = new MultipartBody.Builder()
-<<<<<<< HEAD
-                    .addFormDataPart("ticket_id", "17")
-=======
                     .addFormDataPart("ticket_ids", selectedIds.toString()) //Problem here
->>>>>>> aec6a80800407c204112e8bc2184f7031077b0c5
                     .setType(MultipartBody.FORM)
                     .build();
             Request request = new Request.Builder()
@@ -211,4 +211,38 @@ public class ChooseSeatFragmentDemo extends Fragment{
             }
         }
     }
+    public class ConfirmDialog extends DialogFragment {
+        ArrayList<Integer> selectedIds;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class because this dialog has a simple UI
+            final MainActivity activity = (MainActivity) getActivity();
+            selectedIds = getArguments().getIntegerArrayList("selectedIds");
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            // Dialog will have "Make a selection" as the title
+            builder.setMessage("Are you sure? ")
+                    // An OK button that does nothing
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            activity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    new ChooseSeatFragmentDemo.BookSeat(selectedIds).execute(ApiUrl.bookTicket());
+                                }
+                            });
+                            dismiss();
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dismiss();
+                        }
+                    });
+            // Create the object and return it
+            return builder.create();
+        }// End onCreateDialog
+
+    }
+
 }
