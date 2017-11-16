@@ -31,11 +31,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okio.BufferedSink;
 
 /**
  * Created by trungdunghoang on 14/11/2017.
@@ -83,7 +86,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            new ChooseSeatFragmentDemo.BookSeat(selectedSeats).execute(ApiUrl.bookTicket());
+                        new ChooseSeatFragmentDemo.BookSeat(selectedSeats).execute(ApiUrl.bookTicket());
                         }
                     });
                 }
@@ -160,18 +163,21 @@ public class ChooseSeatFragmentDemo extends Fragment{
             String url = strings[0];
             Log.i("info", "BookSeat:"+strings[0]);
             RequestBody requestBody = new MultipartBody.Builder()
+<<<<<<< HEAD
                     .addFormDataPart("ticket_id", "17")
+=======
+                    .addFormDataPart("ticket_ids", selectedIds.toString()) //Problem here
+>>>>>>> aec6a80800407c204112e8bc2184f7031077b0c5
                     .setType(MultipartBody.FORM)
                     .build();
             Request request = new Request.Builder()
                     .url(url).put(requestBody).addHeader("Authorization",token).build();
-
             try {
                 Response response = okHttpClient.newCall(request).execute();
                 String a = response.body().string();
                 Log.i("info", "body"+a);
                 return a;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;

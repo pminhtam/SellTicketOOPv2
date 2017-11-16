@@ -14,7 +14,7 @@ public class SignoutDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class because this dialog has a simple UI
-        final MainActivity activity = (MainActivity) getActivity();
+        final MainActivity activity = (MainActivity) this.getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         // Dialog will have "Make a selection" as the title
         builder.setMessage("Are you sure to signout?")
@@ -22,6 +22,7 @@ public class SignoutDialog extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                     activity.setUserData("");
+                    activity.getUserDataFromToken();
                     activity.setNavigationDetail();
                     activity.moveToLogInFragment();
                     }

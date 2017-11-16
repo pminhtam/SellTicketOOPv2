@@ -62,7 +62,9 @@ public class HomeFragment extends Fragment {
     }
     private class GetFilm extends AsyncTask<String,Integer,String> {
         //API web dang nhap
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .build();
 
         @Override
         protected String doInBackground(String... params) {
