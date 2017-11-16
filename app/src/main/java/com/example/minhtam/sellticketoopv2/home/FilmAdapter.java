@@ -79,7 +79,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
                         bundle.putString("token",token);
-                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -94,7 +94,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
                         bundle.putString("token",token);
-                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
@@ -109,7 +109,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Bundle bundle = new Bundle();
                         bundle.putString("id",id);
                         bundle.putString("token",token);
-                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
                         frag.setArguments(bundle);
                         fragmentTransaction.commit();
                     }
