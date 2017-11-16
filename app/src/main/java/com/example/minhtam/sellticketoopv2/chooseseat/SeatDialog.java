@@ -56,7 +56,7 @@ public class SeatDialog extends DialogFragment {
                     dialog.show(activity.getFragmentManager(), "123");
                 } else {
 //                    SeatAdapter adapter = (SeatAdapter)getHost();
-                    adapter.addSelectedItem(position);
+                    adapter.addSelectedItem(Integer.parseInt(itemSeat.getId()), position);
                     dismiss();
                 }
             }

@@ -15,9 +15,12 @@ import com.example.minhtam.sellticketoopv2.MainActivity;
 public class DeleteSelectionDialog extends DialogFragment {
     SeatAdapter adapter;
     int position;
-    public void sendItem(SeatAdapter adapter, int position) {
+    ItemSeat itemSeat;
+
+    public void sendItem(SeatAdapter adapter, int position, ItemSeat itemSeat) {
         this.adapter = adapter;
         this.position = position;
+        this.itemSeat = itemSeat;
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class DeleteSelectionDialog extends DialogFragment {
                 // An OK button that does nothing
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        adapter.removeSelectedItem(position);
+                        adapter.removeSelectedItem(Integer.parseInt(itemSeat.getId()),position);
                     }
                 })
                 // A "Cancel" button that does nothing
