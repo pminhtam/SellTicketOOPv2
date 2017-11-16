@@ -39,7 +39,7 @@ public class ApiUrl {
         return URL + "api/v1/customers/schedules/" + scheduleId;
     }
 
-    public static String bookTicket(String ticketId) {
-        return URL + "/api/v1/customers/tickets/book/" + ticketId;
+    public static String bookTicket() {
+        return URL + "api/v1/customers/tickets/book/";
     }
 }

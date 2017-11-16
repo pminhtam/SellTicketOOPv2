@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
-import com.example.minhtam.sellticketoopv2.SignOut;
 
 /**
  * Created by trungdunghoang on 15/11/2017.

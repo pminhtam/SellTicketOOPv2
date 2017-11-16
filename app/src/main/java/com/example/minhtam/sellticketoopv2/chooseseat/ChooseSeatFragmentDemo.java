@@ -1,8 +1,12 @@
 package com.example.minhtam.sellticketoopv2.chooseseat;
 
+
 import android.support.v4.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +28,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -64,8 +71,8 @@ public class ChooseSeatFragmentDemo extends Fragment{
                 for (Integer selectedId : selectedSeats) {
                     totalMoney += items.get(selectedId).getPrice();
                 }
-//                if (totalMoney > Integer.valueOf(activity.getUserMoney())) {
-                if (true) {
+                Log.i("info", totalMoney + " " + activity.getUserMoney() + " " +(totalMoney > activity.getUserMoney()));
+                if (totalMoney > activity.getUserMoney()) {
                     BookFailDialog dialog = new BookFailDialog();
                     dialog.show(activity.getFragmentManager(), "123");
 //                    for (Integer selectedId : selectedSeats) {
@@ -75,10 +82,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            for (Integer selectedId : selectedSeats) {
-                                new ChooseSeatFragmentDemo.BookSeat().execute(ApiUrl.bookTicket(""+selectedId));
-                            }
-
+                            new ChooseSeatFragmentDemo.BookSeat(selectedSeats).execute(ApiUrl.bookTicket());
                         }
                     });
                 }
@@ -100,6 +104,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
         @Override
         protected String doInBackground(String... strings) {
             String url = strings[0];
+            Log.i("info","GetSeat.doInBackground:"+strings[0]);
             Request request = new Request.Builder()
                     .url(url).addHeader("Authorization",token).build();
             try {
@@ -144,15 +149,27 @@ public class ChooseSeatFragmentDemo extends Fragment{
 
     class BookSeat extends AsyncTask<String,Void,String> {
         OkHttpClient okHttpClient = new OkHttpClient();
+        ArrayList<Integer> selectedIds;
 
+        public BookSeat(ArrayList<Integer> selectedIds) {
+            this.selectedIds = selectedIds;
+        }
         @Override
         protected String doInBackground(String... strings) {
             String url = strings[0];
+            Log.i("info", "BookSeat:"+strings[0]);
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .addFormDataPart("ticket_id","17") //Problem here
+                    .setType(MultipartBody.FORM)
+                    .build();
             Request request = new Request.Builder()
-                    .url(url).addHeader("Authorization",token).build();
+                    .url(url).put(requestBody).addHeader("Authorization",token).build();
+
             try {
                 Response response = okHttpClient.newCall(request).execute();
-                return response.body().string();
+                String a = response.body().string();
+                Log.i("info", "body"+a);
+                return a;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -167,7 +184,19 @@ public class ChooseSeatFragmentDemo extends Fragment{
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
-
+                    Integer balance = body.getJSONObject("data").getInt("balance");
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.setUserMoney(balance);
+                    //reload
+                    FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id",id);
+                    bundle.putString("token",token);
+                    frag.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.frame,frag);
+                    fragmentTransaction.commit();
                 } else Toast.makeText(getActivity(), "Fail", Toast.LENGTH_SHORT).show();
 
             } catch (JSONException e) {
