@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -159,7 +160,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
             String url = strings[0];
             Log.i("info", "BookSeat:"+strings[0]);
             RequestBody requestBody = new MultipartBody.Builder()
-                    .addFormDataPart("ticket_id","17") //Problem here
+                    .addFormDataPart("ticket_id", "17")
                     .setType(MultipartBody.FORM)
                     .build();
             Request request = new Request.Builder()
