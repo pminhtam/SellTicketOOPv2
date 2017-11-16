@@ -1,6 +1,5 @@
 package com.example.minhtam.sellticketoopv2.chooseseat;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.os.Build;
@@ -42,13 +41,13 @@ public class SeatDialog extends DialogFragment {
 
         if (itemSeat.isChoose()) {
             txtSeatState.setText("Booked");
+            btnSelect.setVisibility(View.GONE);
         } else {
             txtSeatState.setText("Available");
         }
         txtSeatCategory.setText(itemSeat.getLevel());
         txtSeatPrice.setText(""+itemSeat.getPrice());
         btnSelect.setOnClickListener( new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 if (itemSeat.isChoose()) {

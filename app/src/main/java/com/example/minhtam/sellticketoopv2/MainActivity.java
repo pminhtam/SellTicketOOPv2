@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity
     TextView txtUserName;
     ImageView imgProfile;
 
-    public String userName, userMoney, userRole, userAvatar;
+    public String userName, userRole, userAvatar;
+    public int userMoney;
 
     public String getToken() {
         return token;
@@ -59,11 +60,11 @@ public class MainActivity extends AppCompatActivity
         this.userName = userName;
     }
 
-    public String getUserMoney() {
+    public int getUserMoney() {
         return userMoney;
     }
 
-    public void setUserMoney(String userMoney) {
+    public void setUserMoney(int userMoney) {
         this.userMoney = userMoney;
     }
 
@@ -294,14 +295,14 @@ public class MainActivity extends AppCompatActivity
             token = body.getString("token");
             JSONObject dataJson = body.getJSONObject("data");
             setUserName(dataJson.getString("name"));
-            setUserMoney(dataJson.getString("email"));
+            setUserMoney(dataJson.getInt("balance"));
             setUserRole(dataJson.getString("role"));
             setUserAvatar(dataJson.getString("avatar"));
         } catch (Exception e) {
             e.printStackTrace();
             token = "";
             setUserName("");
-            setUserMoney("");
+            setUserMoney(0);
         }
 
     }
