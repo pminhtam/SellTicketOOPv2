@@ -104,7 +104,9 @@ public class SignInFragment extends Fragment {
     //class gui request để đăng ký
     private class PostSignIn extends AsyncTask<String,Integer,String> {
         //API web dang nhap
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .build();
         @Override
         protected String doInBackground(String... params) {
             RequestBody requestBody = new MultipartBody.Builder()

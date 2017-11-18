@@ -38,4 +38,17 @@ public class ApiUrl {
     public static String getSchedule(String scheduleId) {
         return URL + "api/v1/customers/schedules/" + scheduleId;
     }
+
+    public static String bookTicket() {
+        return URL + "api/v1/customers/tickets/book/";
+    }
+    public static String getUpdateUserInfo() {
+        return URL + "/api/v1/customers/users/info";
+    }
+    public static String getUpdateUserPassword() {
+        return URL + "/api/v1/customers/users/update_password";
+    }
+    public static String getUserHistoryBookTicket(){
+        return URL + "/api/v1/customers/tickets/history_book";
+    }
 }

@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
+import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 import com.example.minhtam.sellticketoopv2.home.ItemFilm;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class FilmPlaceAdapter extends RecyclerView.Adapter<FilmPlaceAdapter.View
                     MainActivity activity = (MainActivity)context;
                     FragmentManager fragmentManager = activity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    ChooseSeatFragment frag = new ChooseSeatFragment();
+                    ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
                     Bundle bundle = new Bundle();
                     bundle.putString("token", activity.getToken());
                     bundle.putString("id", ""+items.get(position).getId());

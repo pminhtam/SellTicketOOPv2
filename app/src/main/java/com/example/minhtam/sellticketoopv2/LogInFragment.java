@@ -102,7 +102,9 @@ public class LogInFragment extends Fragment {
     //class gui request để đăng nhập
     private class PostLogIn extends AsyncTask<String,Integer,String> {
         //API web dang nhap
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .build();
         @Override
         protected String doInBackground(String... params) {
             RequestBody requestBody = new MultipartBody.Builder()       // gan header
@@ -133,6 +135,7 @@ public class LogInFragment extends Fragment {
                     userDataManager.setUserData(s);
                     Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     //Đăng nhập thành công thì refresh lại thanh điều hướng
+                    ((MainActivity) getActivity()).getUserDataFromToken();
                     ((MainActivity) getActivity()).setNavigationDetail();
                     ((MainActivity) getActivity()).moveToHomeFragment();
                 } else Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();

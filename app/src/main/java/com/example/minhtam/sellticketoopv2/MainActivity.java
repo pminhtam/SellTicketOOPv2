@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +20,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
+import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
+import com.example.minhtam.sellticketoopv2.updateuserinfo.UpdateUserInfoFragment;
+import com.example.minhtam.sellticketoopv2.userhistorybookticket.UserHistoryBookTicketFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -40,7 +46,8 @@ public class MainActivity extends AppCompatActivity
     TextView txtUserName;
     ImageView imgProfile;
 
-    public String userName, userMoney, userRole, userAvatar;
+    public String userName, userRole, userAvatar;
+    public int userMoney;
 
     public String getToken() {
         return token;
@@ -58,11 +65,11 @@ public class MainActivity extends AppCompatActivity
         this.userName = userName;
     }
 
-    public String getUserMoney() {
+    public int getUserMoney() {
         return userMoney;
     }
 
-    public void setUserMoney(String userMoney) {
+    public void setUserMoney(int userMoney) {
         this.userMoney = userMoney;
     }
 
@@ -115,7 +122,8 @@ public class MainActivity extends AppCompatActivity
             moveToHomeFragment();
         }
     }
-
+    //////////////////////////////////////////////////////////////
+    //************************************************************
     public void moveToLogInFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, new LogInFragment());
@@ -134,6 +142,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -144,6 +153,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -155,10 +165,33 @@ public class MainActivity extends AppCompatActivity
         bundle.putString("token", token);
         bundle.putString("id", "1");
         frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame, frag);
+        fragmentTransaction.commit();
+    }
+    public void moveToUpdateUserInfoFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        UpdateUserInfoFragment frag = new UpdateUserInfoFragment(userName,userRole,userAvatar,userMoney);
+        Bundle bundle = new Bundle();
+        bundle.putString("token", token);
+        frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame, frag);
+        fragmentTransaction.commit();
+    }
+    public void moveToUserHistoryBookTicketFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        UserHistoryBookTicketFragment frag = new UserHistoryBookTicketFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("token", token);
+        frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
 
+    //*************************************************************
+    ///////////////////////////////////////////////////////////////
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -203,6 +236,10 @@ public class MainActivity extends AppCompatActivity
             moveToPlaceFragment();
         } else if (id == R.id.nav_login) {
             moveToLogInFragment();
+        }else if(id==R.id.nav_update_info){
+            moveToUpdateUserInfoFragment();
+        }else if(id==R.id.nav_user_history){
+            moveToUserHistoryBookTicketFragment();
         }
         else if (id == R.id.nav_signout) {
             SignoutDialog myDialog = new SignoutDialog();
@@ -211,7 +248,7 @@ public class MainActivity extends AppCompatActivity
         else if (id ==R.id.nav_chooseSeat){     //thử nghiệm
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            ChooseSeatFragment frag = new ChooseSeatFragment();
+            ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
             Bundle bundle = new Bundle();
             bundle.putString("token", token);
             bundle.putString("id", "1");
@@ -255,6 +292,8 @@ public class MainActivity extends AppCompatActivity
                 data+=sc.next();
             }
             sc.close();
+            Log.e("data cache ",data);
+
             return data;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -263,7 +302,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setNavigationDetail() {
-        getUserDataFromToken();
         if (userName.equals("")) { //Chua dang nhap
             txtUserName.setText("Hi!!!");
             Glide.with(this).load(R.drawable.user).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgProfile);
@@ -293,14 +331,14 @@ public class MainActivity extends AppCompatActivity
             token = body.getString("token");
             JSONObject dataJson = body.getJSONObject("data");
             setUserName(dataJson.getString("name"));
-            setUserMoney(dataJson.getString("email"));
+            setUserMoney(dataJson.getInt("balance"));
             setUserRole(dataJson.getString("role"));
             setUserAvatar(dataJson.getString("avatar"));
         } catch (Exception e) {
             e.printStackTrace();
             token = "";
             setUserName("");
-            setUserMoney("");
+            setUserMoney(0);
         }
 
     }
@@ -315,5 +353,23 @@ public class MainActivity extends AppCompatActivity
     public void setUserData(String userData) {
         this.userData = userData;
         writeCache(userData);
+    }
+    public void setNewUserData() {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("name",userName);
+            data.put("balance",userMoney);
+            data.put("role",userRole);
+            data.put("avatar",userAvatar);
+            JSONObject userDataJson = new JSONObject();
+            userDataJson.put("code",1);
+            userDataJson.put("message","Đăng nhập thành công");
+            userDataJson.put("token",token);
+            userDataJson.put("data",data);
+            Log.e("data new ",userDataJson.toString());
+            setUserData(userDataJson.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

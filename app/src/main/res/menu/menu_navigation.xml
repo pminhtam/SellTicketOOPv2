@@ -22,6 +22,15 @@
             android:id="@+id/nav_analyze"
             android:icon="@drawable/ic_menu_share"
             android:title="Thống kê" />
+        <item
+            android:id="@+id/nav_update_info"
+            android:icon="@drawable/ic_room_black"
+            android:title="Cập nhật thông tin" />
+        <item
+            android:id="@+id/nav_user_history"
+            android:icon="@drawable/ic_room_black"
+            android:title="Lịch sử đặt vé" />
+
 
     </group>
     <group>
