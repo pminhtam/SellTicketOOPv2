@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
+import com.example.minhtam.sellticketoopv2.filmcreate.CreateFilmFragment;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
 import com.example.minhtam.sellticketoopv2.updateuserinfo.UpdateUserInfoFragment;
@@ -178,6 +179,17 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
+    public void moveToCreateFilmFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        CreateFilmFragment frag = new CreateFilmFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("token", token);
+        frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame, frag);
+        fragmentTransaction.commit();
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -229,19 +241,11 @@ public class MainActivity extends AppCompatActivity
             SignoutDialog myDialog = new SignoutDialog();
             myDialog.show(getFragmentManager(), "123");
         }
-        else if (id ==R.id.nav_chooseSeat){     //thử nghiệm
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
-            Bundle bundle = new Bundle();
-            bundle.putString("token", token);
-            bundle.putString("id", "1");
-            frag.setArguments(bundle);
-            fragmentTransaction.replace(R.id.frame,frag);
-            fragmentTransaction.commit();
-        }
         else if (id ==R.id.nav_analyze){     //thử nghiệm
             moveToAnalyzeFragment();
+        }
+        else if (id ==R.id.nav_create_film) {
+            moveToCreateFilmFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
