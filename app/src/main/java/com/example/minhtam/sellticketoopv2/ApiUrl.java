@@ -51,4 +51,16 @@ public class ApiUrl {
     public static String getUserHistoryBookTicket(){
         return URL + "/api/v1/customers/tickets/history_book";
     }
+    public static class Seller{
+        public static String getCreateFilm(){
+            return URL + "/api/v1/customers/films";
+        }
+        public static String getRoom(String locationId){
+            return URL + "/api/v1/customers/rooms?location_id="+locationId;
+        }
+        public static String getCreateSchedule(){
+            return URL + "/api/v1/customers/schedules";
+        }
+
+    }
 }

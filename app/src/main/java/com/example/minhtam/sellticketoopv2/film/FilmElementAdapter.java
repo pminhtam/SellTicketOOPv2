@@ -75,6 +75,7 @@ public class FilmElementAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         bundle.putString("id",itemFilmSchedules.getIdSchedules());
                         bundle.putString("token",token);
                         frag.setArguments(bundle);
+                        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
                         fragmentTransaction.replace(R.id.frame,frag);
                         fragmentTransaction.commit();
                     }

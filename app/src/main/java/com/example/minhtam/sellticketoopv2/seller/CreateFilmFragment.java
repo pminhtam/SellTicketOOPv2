@@ -1,10 +1,8 @@
-package com.example.minhtam.sellticketoopv2.updateuserinfo;
+package com.example.minhtam.sellticketoopv2.seller;
 
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -16,18 +14,15 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
@@ -52,49 +47,29 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-@SuppressLint("ValidFragment")
-public class UpdateImageFragment extends Fragment {
+public class CreateFilmFragment extends Fragment {
 
-    String userName,userAvatar;
-    String token;
-    MainActivity activity;
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if(context instanceof MainActivity){
-            activity = (MainActivity) context;
-        }
-        else{
-            throw new RuntimeException(context.toString() + " must implement onViewSelected");
-        }
-    }
 
-    @SuppressLint("ValidFragment")
-    public UpdateImageFragment(String userName,String userAvatar,String token) {
+    public CreateFilmFragment() {
         // Required empty public constructor
-        this.userAvatar = userAvatar;
-        this.userName = userName;
-        this.token = token;
-
     }
-    ImageView imgUpdateImage;
-    Button btnChooseUpdateImage,btnSubmitUpdateImage;
+    String token;
+    EditText edtNameCreateFilm,edtKindCreateFilm,edtDurationCreateFilm,edtDateCreateFilm;
+    ImageView imgCreateFilm;
+    Button btnImageCreateFilm,btnSubmitCreateFilm;
+
     int REQUEST_CODE_FOLDER =1;
     String path;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_update_image, container, false);
-        imgUpdateImage = (ImageView) view.findViewById(R.id.imgUpdateImage);
-        btnChooseUpdateImage = (Button) view.findViewById(R.id.btnChooseUpdateImage);
-        btnSubmitUpdateImage = (Button) view.findViewById(R.id.btnSubmitUpdateImage);
-        Glide.with(this)
-                .load(ApiUrl.URL + userAvatar)
-                .error(getResources().getDrawable(R.drawable.user))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgUpdateImage);
-        btnChooseUpdateImage.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_create_film, container, false);
+        token = getArguments().getString("token");
+        findView(view);
+
+        btnImageCreateFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
@@ -102,15 +77,23 @@ public class UpdateImageFragment extends Fragment {
                 startActivityForResult(intent,REQUEST_CODE_FOLDER);
             }
         });
-        btnSubmitUpdateImage.setOnClickListener(new View.OnClickListener() {
+
+        btnSubmitCreateFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verifyStoragePermissions(getActivity());
-                new PutImage().execute(ApiUrl.getUpdateUserInfo());
+                new PostCreateFilm().execute(ApiUrl.Seller.getCreateFilm());
             }
         });
-
         return view;
+    }
+    private void  findView(View view){
+        edtNameCreateFilm = (EditText) view.findViewById(R.id.edtNameCreateFilm);
+        edtKindCreateFilm = (EditText) view.findViewById(R.id.edtKindCreateFilm);
+        edtDurationCreateFilm = (EditText) view.findViewById(R.id.edtDurationCreateFilm);
+        edtDateCreateFilm = (EditText) view.findViewById(R.id.edtDateCreateFilm);
+        imgCreateFilm = (ImageView) view.findViewById(R.id.imgCreateFilm);
+        btnImageCreateFilm = (Button) view.findViewById(R.id.btnImageCreateFilm);
+        btnSubmitCreateFilm = (Button) view.findViewById(R.id.btnSubmitCreateFilm);
     }
 
     @Override
@@ -121,7 +104,7 @@ public class UpdateImageFragment extends Fragment {
             try {
                 InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                imgUpdateImage.setImageBitmap(bitmap);
+                imgCreateFilm.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -135,7 +118,8 @@ public class UpdateImageFragment extends Fragment {
         cursor.moveToFirst();
         return cursor.getString(column_index);
     }
-    class PutImage extends AsyncTask<String,Void,String> {
+
+    class PostCreateFilm extends AsyncTask<String,Void,String> {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
                 .build();
@@ -148,14 +132,17 @@ public class UpdateImageFragment extends Fragment {
 
             RequestBody file_body = RequestBody.create(MediaType.parse(content_type),file);
             RequestBody requestBody = new MultipartBody.Builder()
-                    .addFormDataPart("name",userName)
-                    .addFormDataPart("avatar",file_path.substring(file_path.lastIndexOf("/")+1),file_body)
+                    .addFormDataPart("name",edtNameCreateFilm.getText().toString())
+                    .addFormDataPart("kind",edtKindCreateFilm.getText().toString())
+                    .addFormDataPart("duration",edtDurationCreateFilm.getText().toString())
+                    .addFormDataPart("release_date ",edtDateCreateFilm.getText().toString())
+                    .addFormDataPart("image",file_path.substring(file_path.lastIndexOf("/")+1),file_body)
                     .setType(MultipartBody.FORM)
                     .build();
             Request request = new Request.Builder()
                     .url(strings[0])
                     .addHeader("Authorization",token)
-                    .put(requestBody)
+                    .post(requestBody)
                     .build();
 
             try {
@@ -174,12 +161,8 @@ public class UpdateImageFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
-                    JSONObject dataJson = body.getJSONObject("data");
-                    String useravatar = dataJson.getString("avatar");
-                    activity.setUserAvatar(useravatar);
+//                    JSONObject dataJson = body.getJSONObject("data");
 //                    ((MainActivity) getActivity()).setNewUserData();
-                    activity.setNewUserData();
-                    ((MainActivity) getActivity()).setNavigationDetail();
                     ((MainActivity) getActivity()).moveToHomeFragment();
 
                 } else Toast.makeText(getActivity(), "Cập nhập thất bại", Toast.LENGTH_SHORT).show();
@@ -193,6 +176,8 @@ public class UpdateImageFragment extends Fragment {
         String extension = MimeTypeMap.getFileExtensionFromUrl(path);
         return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
     }
+
+
     ///////////
     /**
      * Xin cấp quyền đọc ổ đĩa để load ảnh

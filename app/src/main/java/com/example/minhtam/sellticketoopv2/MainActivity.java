@@ -23,6 +23,7 @@ import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
+import com.example.minhtam.sellticketoopv2.seller.createschedule.ChooseFilmSellFragment;
 import com.example.minhtam.sellticketoopv2.updateuserinfo.UpdateUserInfoFragment;
 import com.example.minhtam.sellticketoopv2.userhistorybookticket.UserHistoryBookTicketFragment;
 
@@ -189,7 +190,16 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
-
+    public void moveToSellerCreateSchedule(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        ChooseFilmSellFragment frag = new ChooseFilmSellFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("token", token);
+        frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame, frag);
+        fragmentTransaction.commit();
+    }
     //*************************************************************
     ///////////////////////////////////////////////////////////////
     @Override
@@ -240,6 +250,8 @@ public class MainActivity extends AppCompatActivity
             moveToUpdateUserInfoFragment();
         }else if(id==R.id.nav_user_history){
             moveToUserHistoryBookTicketFragment();
+        }else if(id==R.id.nav_seller_create_schedule){
+            moveToSellerCreateSchedule();
         }
         else if (id == R.id.nav_signout) {
             SignoutDialog myDialog = new SignoutDialog();

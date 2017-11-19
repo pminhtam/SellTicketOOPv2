@@ -30,6 +30,10 @@
             android:id="@+id/nav_user_history"
             android:icon="@drawable/ic_room_black"
             android:title="Lịch sử đặt vé" />
+        <item
+            android:id="@+id/nav_seller_create_schedule"
+            android:icon="@drawable/ic_room_black"
+            android:title="Tao phong xem phim" />
 
 
     </group>
