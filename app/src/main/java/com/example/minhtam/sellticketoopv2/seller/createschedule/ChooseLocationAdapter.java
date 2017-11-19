@@ -52,11 +52,7 @@ public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAd
                 itemChooseFilm.setLocationId(String.valueOf(items.get(position).getId()));
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FilmPlaceFragment frag = new FilmPlaceFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("token", activity.getToken());
-                bundle.putString("id", ""+items.get(position).getId());
-                frag.setArguments(bundle);
+                ChooseRoomFragment frag = new ChooseRoomFragment(itemChooseFilm,token);
                 fragmentTransaction.replace(R.id.frame,frag);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
