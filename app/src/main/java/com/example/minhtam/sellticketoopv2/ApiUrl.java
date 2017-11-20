@@ -43,9 +43,12 @@ public class ApiUrl {
         return URL + "api/v1/customers/tickets/book/";
     }
     public static String getUpdateUserInfo() {
-        return URL + "/api/v1/customers/users/info";
+        return URL + "api/v1/customers/users/info";
     }
     public static String getUpdateUserPassword() {
-        return URL + "/api/v1/customers/users/update_password";
+        return URL + "api/v1/customers/users/update_password";
+    }
+    public static String postCreateFilm() {
+        return URL + "api/v1/customers/films";
     }
 }
