@@ -3,8 +3,8 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="250dp">
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/imgUserHistory"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +26,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtRowColUserHistory"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTimeBeginUserHistory"
+            android:text="Thời gian bắt đầu"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTimeEndUserHistory"
+            android:text="Thời gian kết thúc"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTimeUserBookUserHistory"
+            android:text="Thời gian đặt vé"/>
     </LinearLayout>
 
 </LinearLayout>

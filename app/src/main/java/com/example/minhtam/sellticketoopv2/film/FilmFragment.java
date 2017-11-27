@@ -142,7 +142,7 @@ public class FilmFragment extends Fragment {
                     itemFilmElement.add(0,itemFilmElementInfo);
                     adapter = new FilmElementAdapter(context,itemFilmElement,token,getFragmentManager());
                     rcFilmElement.setAdapter(adapter);
-                    Toast.makeText(getActivity(), "Xong noi dung film roi", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "Xong noi dung film roi", Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -186,7 +186,8 @@ public class FilmFragment extends Fragment {
 
                     for (int i=0;i<listSchedule.length();i++){
                         String id = listSchedule.getJSONObject(i).getString("id").toString();
-                        ItemFilmSchedules itemFilmSchedules = new ItemFilmSchedules(id);
+                        String nameLocation = listSchedule.getJSONObject(i).getString("name").toString();
+                        ItemFilmSchedules itemFilmSchedules = new ItemFilmSchedules(id,nameLocation);
                         itemFilmElement.add(itemFilmSchedules);
                         adapter.notifyDataSetChanged();
 //                        strItem.add(id);
@@ -212,7 +213,7 @@ public class FilmFragment extends Fragment {
                     */
 
 
-                    Toast.makeText(getActivity(), "Co Lít View", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "Co Lít View", Toast.LENGTH_SHORT).show();
                 }
                 else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {

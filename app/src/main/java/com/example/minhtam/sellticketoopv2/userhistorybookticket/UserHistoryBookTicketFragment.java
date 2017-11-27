@@ -89,26 +89,19 @@ public class UserHistoryBookTicketFragment extends Fragment {
                         int price = listHistory.getJSONObject(i).getInt("price");
                         String row = listHistory.getJSONObject(i).getString("seat_row");
                         String column = listHistory.getJSONObject(i).getString("seat_col");
-                        String scheduleId = listHistory.getJSONObject(i).getString("schedule_id");
-                        String nameLocation = listHistory.getJSONObject(i).getString("name");
-                        items.add(new ItemUserHistoryBookTicket(price,row,column,scheduleId,nameLocation));
+                        String nameLocation = listHistory.getJSONObject(i).getString("location_name");
+                        String nameFilm = listHistory.getJSONObject(i).getString("film_name");
+                        String image = listHistory.getJSONObject(i).getString("film_image");
+                        String time_begin = listHistory.getJSONObject(i).getString("time_begin");
+                        String time_end = listHistory.getJSONObject(i).getString("time_end");
+                        String time_user_book = listHistory.getJSONObject(i).getString("time_user_book");
+                        items.add(new ItemUserHistoryBookTicket(price,row,column,nameFilm,nameLocation,image,time_begin,time_end,time_user_book));
                     }
                     rcUserHistoryBookTicket.setHasFixedSize(true);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false);
                     rcUserHistoryBookTicket.setLayoutManager(layoutManager);
                     adapter = new UserHistoryAdapter(getActivity(),items);
                     rcUserHistoryBookTicket.setAdapter(adapter);
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            for(int i=0;i<items.size();i++){
-                                if(i<10)
-                                    new GetSchedule().execute(ApiUrl.getSchedule(items.get(i).getScheduleId()),"0"+String.valueOf(i));
-                                else
-                                    new GetSchedule().execute(ApiUrl.getSchedule(items.get(i).getScheduleId()),String.valueOf(i));
-                            }
-                        }
-                    });
 
                 } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
@@ -117,51 +110,4 @@ public class UserHistoryBookTicketFragment extends Fragment {
         }
     }
 
-    class GetSchedule extends AsyncTask<String,Void,String> {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .retryOnConnectionFailure(true)
-                .build();
-        @Override
-        protected String doInBackground(String... strings) {
-            String url = strings[0];
-            Request request = new Request.Builder()
-                    .url(url).addHeader("Authorization",token).build();
-            try {
-                Response response = okHttpClient.newCall(request).execute();
-                return strings[1]+response.body().string();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-        JSONArray seats;
-        @Override
-        protected void onPostExecute(String s) {
-//            Log.i("ChooseSeatFragment",s);
-            super.onPostExecute(s);
-//            Log.e("History ",s);
-
-            String index = s.substring(0,2);
-//            Log.e("History ",index);
-
-            String sub = s.substring(2);
-//            Log.e("History ",sub);
-
-            try {
-                JSONObject body = new JSONObject(sub);
-                int code = body.getInt("code");
-                if (code == 1) {
-//                    Log.e("History ",index);
-                    JSONObject data = body.getJSONObject("data");
-                    int i = Integer.parseInt(index);
-                    items.get(i).setNameFilm(data.getString("name"));
-                    items.get(i).setImage(data.getString("image"));
-                    adapter.notifyDataSetChanged();
-                } else Toast.makeText(getActivity(), "Khong Co Film", Toast.LENGTH_SHORT).show();
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

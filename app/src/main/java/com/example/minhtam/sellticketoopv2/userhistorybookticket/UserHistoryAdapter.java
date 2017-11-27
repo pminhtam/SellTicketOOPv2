@@ -44,6 +44,9 @@ public class UserHistoryAdapter extends RecyclerView.Adapter<UserHistoryAdapter.
         holder.txtLocationUserHistory.setText(itemUserHistoryBookTickets.get(position).getNameLocation());
         holder.txtPriceUserHistory.setText(String.valueOf(itemUserHistoryBookTickets.get(position).getPrice()));
         holder.txtRowColUserHistory.setText("Hang la "+ itemUserHistoryBookTickets.get(position).getRow() + "\n Cot la "+ itemUserHistoryBookTickets.get(position).getColumn());
+        holder.txtTimeBeginUserHistory.append(itemUserHistoryBookTickets.get(position).getTime_begin());
+        holder.txtTimeEndUserHistory.append(itemUserHistoryBookTickets.get(position).getTime_end());
+        holder.txtTimeUserBookUserHistory.append(itemUserHistoryBookTickets.get(position).getTime_user_book());
     }
 
     @Override
@@ -54,6 +57,7 @@ public class UserHistoryAdapter extends RecyclerView.Adapter<UserHistoryAdapter.
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgUserHistory;
         TextView txtNameFilmUserHistory,txtLocationUserHistory,txtPriceUserHistory,txtRowColUserHistory;
+        TextView txtTimeBeginUserHistory,txtTimeEndUserHistory,txtTimeUserBookUserHistory;
         public ViewHolder(View itemView) {
             super(itemView);
             imgUserHistory = (ImageView) itemView.findViewById(R.id.imgUserHistory);
@@ -61,6 +65,9 @@ public class UserHistoryAdapter extends RecyclerView.Adapter<UserHistoryAdapter.
             txtLocationUserHistory = (TextView) itemView.findViewById(R.id.txtLocationUserHistory);
             txtPriceUserHistory = (TextView) itemView.findViewById(R.id.txtPriceUserHistory);
             txtRowColUserHistory = (TextView) itemView.findViewById(R.id.txtRowColUserHistory);
+            txtTimeBeginUserHistory = (TextView) itemView.findViewById(R.id.txtTimeBeginUserHistory);
+            txtTimeEndUserHistory = (TextView) itemView.findViewById(R.id.txtTimeEndUserHistory);
+            txtTimeUserBookUserHistory = (TextView) itemView.findViewById(R.id.txtTimeUserBookUserHistory);
         }
     }
 }

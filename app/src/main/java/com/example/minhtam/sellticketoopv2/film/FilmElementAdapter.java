@@ -65,7 +65,7 @@ public class FilmElementAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case 1:
                 ViewHolderSchedules viewHolderSchedules = (ViewHolderSchedules) holder;
                 itemFilmSchedules = (ItemFilmSchedules) itemFilmElement.get(position);
-                viewHolderSchedules.txtFilmElementSchedules.setText(itemFilmSchedules.getIdSchedules());
+                viewHolderSchedules.txtFilmElementSchedules.setText(itemFilmSchedules.getNameLocation());
                 viewHolderSchedules.txtFilmElementSchedules.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

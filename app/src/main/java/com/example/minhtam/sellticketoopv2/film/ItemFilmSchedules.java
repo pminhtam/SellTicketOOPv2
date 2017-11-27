@@ -9,8 +9,10 @@ public class ItemFilmSchedules {
     private String idSchedules;
     private String timeBegin,timeEnd;
     private String nameFilm;
-    public ItemFilmSchedules(String id){
+    private String nameLocation;
+    public ItemFilmSchedules(String id,String nameLocation){
         idSchedules = id;
+        this.nameLocation = nameLocation;
     }
     public String getIdSchedules() {
         return idSchedules;
@@ -42,5 +44,13 @@ public class ItemFilmSchedules {
 
     public void setNameFilm(String nameFilm) {
         this.nameFilm = nameFilm;
+    }
+
+    public String getNameLocation() {
+        return nameLocation;
+    }
+
+    public void setNameLocation(String nameLocation) {
+        this.nameLocation = nameLocation;
     }
 }

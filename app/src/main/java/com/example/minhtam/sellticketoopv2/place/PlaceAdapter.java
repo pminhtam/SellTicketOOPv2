@@ -48,11 +48,9 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtNamePlace;
-        ImageView imgPlace;
         public ViewHolder(View itemView) {
             super(itemView);
             txtNamePlace = (TextView) itemView.findViewById(R.id.txtNamePlace);
-            imgPlace = (ImageView) itemView.findViewById(R.id.imgPlace);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     int position = getAdapterPosition();

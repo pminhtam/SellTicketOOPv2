@@ -67,11 +67,9 @@ public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAd
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtNamePlace;
-        ImageView imgPlace;
         public ViewHolder(View itemView) {
             super(itemView);
             txtNamePlace = (TextView) itemView.findViewById(R.id.txtNamePlace);
-            imgPlace = (ImageView) itemView.findViewById(R.id.imgPlace);
 
         }
     }

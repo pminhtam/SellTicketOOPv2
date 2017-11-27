@@ -36,18 +36,17 @@ public class FilmPlaceAdapter extends RecyclerView.Adapter<FilmPlaceAdapter.View
     @Override
     public FilmPlaceAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.item_film_place, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.item_film_, parent, false);
         return new FilmPlaceAdapter.ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(FilmPlaceAdapter.ViewHolder holder, int position) {
-        holder.txtFilmPlaceName.setText(items.get(position).getName());
-        holder.txtFilmPlaceDetail.setText(items.get(position).getName());
+        holder.txtNameFilm.setText(items.get(position).getName());
         Glide.with(context)
                 .load("http://tickett.cloudapp.net" + items.get(position).getImage())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.imgFilmPlace);
+                .into(holder.imgFilm);
     }
 
     @Override
@@ -56,14 +55,12 @@ public class FilmPlaceAdapter extends RecyclerView.Adapter<FilmPlaceAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtFilmPlaceName;
-        ImageView imgFilmPlace;
-        TextView txtFilmPlaceDetail;
+        TextView txtNameFilm;
+        ImageView imgFilm;
         public ViewHolder(View itemView) {
             super(itemView);
-            txtFilmPlaceName = (TextView) itemView.findViewById(R.id.txtFilmPlaceName);
-            txtFilmPlaceDetail = (TextView) itemView.findViewById(R.id.txtFilmPlaceDetail);
-            imgFilmPlace = (ImageView) itemView.findViewById(R.id.imgFilmPlace);
+            txtNameFilm = (TextView) itemView.findViewById(R.id.txtNameFilm);
+            imgFilm = (ImageView) itemView.findViewById(R.id.imgFilm);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     int position = getAdapterPosition();
