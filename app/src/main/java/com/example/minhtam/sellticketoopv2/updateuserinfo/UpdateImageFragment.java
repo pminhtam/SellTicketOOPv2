@@ -141,28 +141,31 @@ public class UpdateImageFragment extends Fragment {
                 .build();
         @Override
         protected String doInBackground(String... strings) {
-            File file = new File(path);
-            String content_type = getType(file.getPath());
-            String file_path = file.getAbsolutePath();
+            if(path.length()>2) {
+                File file = new File(path);
+                String content_type = getType(file.getPath());
+                String file_path = file.getAbsolutePath();
 
 
-            RequestBody file_body = RequestBody.create(MediaType.parse(content_type),file);
-            RequestBody requestBody = new MultipartBody.Builder()
-                    .addFormDataPart("name",userName)
-                    .addFormDataPart("avatar",file_path.substring(file_path.lastIndexOf("/")+1),file_body)
-                    .setType(MultipartBody.FORM)
-                    .build();
-            Request request = new Request.Builder()
-                    .url(strings[0])
-                    .addHeader("Authorization",token)
-                    .put(requestBody)
-                    .build();
+                RequestBody file_body = RequestBody.create(MediaType.parse(content_type), file);
+                RequestBody requestBody = new MultipartBody.Builder()
+                        .addFormDataPart("name", userName)
+                        .addFormDataPart("avatar", file_path.substring(file_path.lastIndexOf("/") + 1), file_body)
+                        .setType(MultipartBody.FORM)
+                        .build();
+                Request request = new Request.Builder()
+                        .url(strings[0])
+                        .addHeader("Authorization", token)
+                        .put(requestBody)
+                        .build();
 
-            try {
-                Response response = okHttpClient.newCall(request).execute();
-                return response.body().string();
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    Response response = okHttpClient.newCall(request).execute();
+                    return response.body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
             return null;
         }

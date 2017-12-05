@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,31 +126,35 @@ public class CreateFilmFragment extends Fragment {
                 .build();
         @Override
         protected String doInBackground(String... strings) {
-            File file = new File(path);
-            String content_type = getType(file.getPath());
-            String file_path = file.getAbsolutePath();
+            if(path.length()>2) {
+                File file = new File(path);
+                String content_type = getType(file.getPath());
+                String file_path = file.getAbsolutePath();
 
 
-            RequestBody file_body = RequestBody.create(MediaType.parse(content_type),file);
-            RequestBody requestBody = new MultipartBody.Builder()
-                    .addFormDataPart("name",edtNameCreateFilm.getText().toString())
-                    .addFormDataPart("kind",edtKindCreateFilm.getText().toString())
-                    .addFormDataPart("duration",edtDurationCreateFilm.getText().toString())
-                    .addFormDataPart("release_date ",edtDateCreateFilm.getText().toString())
-                    .addFormDataPart("image",file_path.substring(file_path.lastIndexOf("/")+1),file_body)
-                    .setType(MultipartBody.FORM)
-                    .build();
-            Request request = new Request.Builder()
-                    .url(strings[0])
-                    .addHeader("Authorization",token)
-                    .post(requestBody)
-                    .build();
+                RequestBody file_body = RequestBody.create(MediaType.parse(content_type), file);
+                RequestBody requestBody = new MultipartBody.Builder()
+                        .addFormDataPart("name", edtNameCreateFilm.getText().toString())
+                        .addFormDataPart("kind", edtKindCreateFilm.getText().toString())
+                        .addFormDataPart("duration", edtDurationCreateFilm.getText().toString())
+                        .addFormDataPart("release_date ", edtDateCreateFilm.getText().toString())
+                        .addFormDataPart("image", file_path.substring(file_path.lastIndexOf("/") + 1), file_body)
+                        .addFormDataPart("content","")
+                        .setType(MultipartBody.FORM)
+                        .build();
+                Request request = new Request.Builder()
+                        .url(strings[0])
+                        .addHeader("Authorization", token)
+                        .post(requestBody)
+                        .build();
 
-            try {
-                Response response = okHttpClient.newCall(request).execute();
-                return response.body().string();
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    Response response = okHttpClient.newCall(request).execute();
+                    return response.body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
             return null;
         }
@@ -157,18 +162,7 @@ public class CreateFilmFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            try {
-                JSONObject body = new JSONObject(s);
-                int code = body.getInt("code");
-                if (code == 1) {
-//                    JSONObject dataJson = body.getJSONObject("data");
-//                    ((MainActivity) getActivity()).setNewUserData();
-                    ((MainActivity) getActivity()).moveToHomeFragment();
-
-                } else Toast.makeText(getActivity(), "Cập nhập thất bại", Toast.LENGTH_SHORT).show();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            Log.e("CreateFilm",s);
         }
     }
 

@@ -133,12 +133,16 @@ public class LogInFragment extends Fragment {
                 int code = body.getInt("code");
                 if (code == 1) {
                     userDataManager.setUserData(s);
-                    Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    Log.e("Login","Thanh cong");
                     //Đăng nhập thành công thì refresh lại thanh điều hướng
                     ((MainActivity) getActivity()).getUserDataFromToken();
                     ((MainActivity) getActivity()).setNavigationDetail();
                     ((MainActivity) getActivity()).moveToHomeFragment();
-                } else Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                    ((MainActivity) getActivity()).showItem(R.id.nav_update_info);
+                    ((MainActivity) getActivity()).showItem(R.id.nav_user_history);
+//                    ((MainActivity) getActivity()).showItem(R.id.nav_seller_create_schedule);
+                } else Log.e("Login","That bai");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

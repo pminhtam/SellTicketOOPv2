@@ -13,17 +13,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnAge"
-            android:text="Thống kê độ tuổi khách hang"/>
+            android:text="Thống kê độ tuổi khách hang"
+            android:background="@drawable/button"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnSex"
-            android:text="Thống kê giới tính khách hàng"/>
+            android:text="Thống kê giới tính khách hàng"
+            android:background="@drawable/button"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnSale"
-            android:text="Thống kê lượng vé bán được"/>
+            android:text="Thống kê lượng vé bán được"
+            android:background="@drawable/button"
+            />
     </LinearLayout>
 
 </FrameLayout>

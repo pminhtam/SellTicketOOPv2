@@ -61,6 +61,9 @@ public class ApiUrl {
         public static String getCreateSchedule(){
             return URL + "/api/v1/customers/schedules";
         }
+        public static String getHistorySell(){
+            return URL + "/api/v1/customers/tickets/history_users_book";
+        }
 
     }
 }

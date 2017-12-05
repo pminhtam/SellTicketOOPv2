@@ -29,14 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="THời gian phim" />
+            android:hint="Độ dài gian phim 180" />
         <EditText
             android:id="@+id/edtDateCreateFilm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Ngày công chiếu" />
+            android:hint="Ngày công chiếu 18/10/2017" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

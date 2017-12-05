@@ -25,6 +25,10 @@ public class SignoutDialog extends DialogFragment {
                     activity.getUserDataFromToken();
                     activity.setNavigationDetail();
                     activity.moveToLogInFragment();
+                    activity.hideItem(R.id.nav_update_info);
+                    activity.hideItem(R.id.nav_user_history);
+                    activity.hideItem(R.id.nav_seller_create_schedule);
+                    activity.hideItem(R.id.nav_seller_create_film);
                     }
                 })
                 // A "Cancel" button that does nothing

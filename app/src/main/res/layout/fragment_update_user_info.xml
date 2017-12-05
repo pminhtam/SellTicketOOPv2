@@ -9,51 +9,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="2"
+        android:orientation="vertical"
         >
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:orientation="horizontal">
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:background="#dcdcff"
-                android:id="@+id/imgUserInfo"/>
+                android:background="@drawable/image_boder"
+                android:id="@+id/imgUserInfo"
+                />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cập nhật ảnh đại diện"
                 android:gravity="center_horizontal"
-                android:id="@+id/btnImageUpdateUserInfo"/>
+                android:id="@+id/btnImageUpdateUserInfo"
+                android:background="@drawable/button"
+                android:textAlignment="center"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:padding="12dp"
+                />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_marginBottom="20dp"
+                >
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="Tên người dùng:"
-                    android:layout_weight="1"/>
+                    />
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:id="@+id/txtUserNameInfo"
                     android:textColor="#00d9ff"/>
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Đổi tên"
                     android:textColor="#2079ff"
                     android:id="@+id/txtNameUpdateUserInfo"/>
@@ -62,16 +61,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:layout_marginBottom="20dp"
+                >
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Loại tài khoản:"/>
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:textColor="#00d9ff"
                     android:id="@+id/txtUserRoleInfo"/>
             </LinearLayout>
@@ -79,16 +77,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                >
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Số dư:"/>
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:textColor="#00d9ff"
                     android:id="@+id/txtUserBalanceInfo"/>
             </LinearLayout>
@@ -96,9 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cập nhật mật khẩu"
-                android:textColor="#ff53c0"
+                android:textColor="#7024ff"
                 android:id="@+id/txtPasswordUpdateUserInfo"/>
-        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

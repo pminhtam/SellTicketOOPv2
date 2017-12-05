@@ -70,7 +70,7 @@ MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Minh Tam\.gradl
 	android:label
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:10:9-41
 	android:icon
-		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:9:9-38
 	android:allowBackup
 		ADDED from D:\google_driver\Code\android\SellTicketOOPv2\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme

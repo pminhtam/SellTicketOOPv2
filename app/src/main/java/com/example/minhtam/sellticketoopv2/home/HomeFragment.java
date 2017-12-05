@@ -153,7 +153,7 @@ public class HomeFragment extends Fragment {
             }
         }
     }
-    public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
+    private class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
         private Drawable mDivider;
 
         public SimpleDividerItemDecoration(Context context) {

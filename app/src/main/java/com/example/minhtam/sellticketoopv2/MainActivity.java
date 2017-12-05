@@ -23,7 +23,9 @@ import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
+import com.example.minhtam.sellticketoopv2.seller.CreateFilmFragment;
 import com.example.minhtam.sellticketoopv2.seller.createschedule.ChooseFilmSellFragment;
+import com.example.minhtam.sellticketoopv2.seller.historysell.HistorySellFragment;
 import com.example.minhtam.sellticketoopv2.updateuserinfo.UpdateUserInfoFragment;
 import com.example.minhtam.sellticketoopv2.userhistorybookticket.UserHistoryBookTicketFragment;
 
@@ -116,8 +118,14 @@ public class MainActivity extends AppCompatActivity
         userData = readCache();
         getUserDataFromToken();
         setNavigationDetail();
+        hideItem(R.id.nav_chooseSeat);
         if(userData.isEmpty()) {       //kiểm tra đã đăng nhập chưa
             moveToLogInFragment();
+            hideItem(R.id.nav_update_info);
+            hideItem(R.id.nav_user_history);
+            hideItem(R.id.nav_seller_create_schedule);
+            hideItem(R.id.nav_seller_create_film);
+            hideItem(R.id.nav_analyze);
         }
         else{
             moveToHomeFragment();
@@ -200,6 +208,26 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
+    public void moveToSellerCreateFilm(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        CreateFilmFragment frag = new CreateFilmFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("token", token);
+        frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame, frag);
+        fragmentTransaction.commit();
+    }
+    public void moveToHistorySell(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        HistorySellFragment frag = new HistorySellFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("token", token);
+        frag.setArguments(bundle);
+        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.frame, frag);
+        fragmentTransaction.commit();
+    }
     //*************************************************************
     ///////////////////////////////////////////////////////////////
     @Override
@@ -252,6 +280,11 @@ public class MainActivity extends AppCompatActivity
             moveToUserHistoryBookTicketFragment();
         }else if(id==R.id.nav_seller_create_schedule){
             moveToSellerCreateSchedule();
+        }else if(id==R.id.nav_seller_create_film){
+            moveToSellerCreateFilm();
+        }
+        else if(id==R.id.nav_history_sell){
+            moveToHistorySell();
         }
         else if (id == R.id.nav_signout) {
             SignoutDialog myDialog = new SignoutDialog();
@@ -331,8 +364,14 @@ public class MainActivity extends AppCompatActivity
             showItem(R.id.nav_signout);
             if (isCustomer()) {
                 hideItem(R.id.nav_analyze);
+                hideItem(R.id.nav_seller_create_schedule);
+                hideItem(R.id.nav_seller_create_film);
+                hideItem(R.id.nav_history_sell);
             } else {
                 showItem(R.id.nav_analyze);
+                showItem(R.id.nav_seller_create_schedule);
+                showItem(R.id.nav_seller_create_film);
+                showItem(R.id.nav_history_sell);
             }
         }
     }
@@ -354,10 +393,10 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
-    private void hideItem(int id){
+    public void hideItem(int id){
         navigationView.getMenu().findItem(id).setVisible(false);
     }
-    private void showItem(int id){
+    public void showItem(int id){
         navigationView.getMenu().findItem(id).setVisible(true);
     }
 

@@ -12,35 +12,43 @@
             android:title="Rạp chiếu phim" />
         <item
             android:id="@+id/nav_login"
-            android:icon="@drawable/ic_menu_login"
+            android:icon="@drawable/login"
             android:title="Đăng nhập" />
         <item
             android:id="@+id/nav_chooseSeat"
             android:icon="@drawable/ic_menu_share"
-            android:title="Chọn ghế" />
+            android:title="Chọn ghế"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_analyze"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/analysis"
             android:title="Thống kê" />
         <item
             android:id="@+id/nav_update_info"
-            android:icon="@drawable/ic_room_black"
+            android:icon="@drawable/ic_menu_login"
             android:title="Cập nhật thông tin" />
         <item
             android:id="@+id/nav_user_history"
-            android:icon="@drawable/ic_room_black"
+            android:icon="@drawable/history"
             android:title="Lịch sử đặt vé" />
         <item
             android:id="@+id/nav_seller_create_schedule"
-            android:icon="@drawable/ic_room_black"
+            android:icon="@drawable/add"
             android:title="Tao phong xem phim" />
-
+        <item
+            android:id="@+id/nav_seller_create_film"
+            android:icon="@drawable/film"
+            android:title="Tao phim" />
+        <item
+            android:id="@+id/nav_history_sell"
+            android:icon="@drawable/history_sell"
+            android:title="Lich su ban ve" />
 
     </group>
     <group>
         <item
             android:id="@+id/nav_signout"
-            android:icon="@drawable/ic_menu_login"
+            android:icon="@drawable/signout"
             android:title="Đăng xuất" />
     </group>
 

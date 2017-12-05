@@ -139,6 +139,8 @@ public class SignInFragment extends Fragment {
                     Toast.makeText(getActivity(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                     //Đăng ky thành công thì chuyển sang fragment login
                     ((MainActivity) getActivity()).moveToLogInFragment();
+
+
                 } else Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
