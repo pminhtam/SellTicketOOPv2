@@ -50,12 +50,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Select" />
+        android:text="Select"
+        android:background="@drawable/button_book" />
 
     <Button
         android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Close" />
+        android:text="Close"
+        android:background="@drawable/button_book"/>
 </LinearLayout>

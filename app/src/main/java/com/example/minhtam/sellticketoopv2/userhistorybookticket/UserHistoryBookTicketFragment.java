@@ -51,6 +51,9 @@ public class UserHistoryBookTicketFragment extends Fragment {
         token = getArguments().getString("token");
         rcUserHistoryBookTicket = (RecyclerView) view.findViewById(R.id.rcUserHistoryBookTicket);
         items = new ArrayList<>();
+
+        getActivity().setTitle("Lịch sử đặt vé");
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

@@ -48,7 +48,7 @@ public class ChooseFilmSellFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_choose_film_sell, container, false);
         token = getArguments().getString("token");
         rcChooseFilmSell = (RecyclerView) view.findViewById(R.id.rcChooseFilmSell);
-
+        getActivity().setTitle("Chọn Phim");
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

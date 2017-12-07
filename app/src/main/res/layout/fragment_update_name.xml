@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Tên người sử dụng mới" />
+            android:hint="Tên người sử dụng mới"
+            android:background="@drawable/edittext"/>
 
         <Button
             android:id="@+id/btnSubmitUpdateName"
@@ -28,7 +29,8 @@
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:padding="12dp"
-            android:text="Xác nhận" />
+            android:text="Xác nhận"
+            android:background="@drawable/button"/>
     </LinearLayout>
 
 </FrameLayout>

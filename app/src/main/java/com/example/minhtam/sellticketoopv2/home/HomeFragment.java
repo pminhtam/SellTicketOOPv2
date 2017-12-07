@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
@@ -52,6 +53,10 @@ public class HomeFragment extends Fragment {
         token = getArguments().getString("token");
         rcFilm = (RecyclerView) view.findViewById(R.id.rcFilm);
         context = getActivity();
+
+        getActivity().setTitle("Trang chủ");
+
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +85,7 @@ public class HomeFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
@@ -91,7 +96,8 @@ public class HomeFragment extends Fragment {
             try {
                 JSONObject body = new JSONObject(s);
 //                Toast.makeText(getActivity(),s,Toast.LENGTH_LONG).show();
-                if(body !=null) {
+                int code = body.getInt("code");
+                if (code == 1) {
                     JSONArray listfilms = body.getJSONArray("data");
                     // Phan header
                     ArrayList<ArrayList<ItemFilm>> itemsALL = new ArrayList<ArrayList<ItemFilm>>();
@@ -147,7 +153,7 @@ public class HomeFragment extends Fragment {
                     rcFilm.setAdapter(adapter);
 
 //                Toast.makeText(FilmActivity.this,s,Toast.LENGTH_LONG).show();
-                }
+                } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

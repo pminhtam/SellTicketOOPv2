@@ -79,6 +79,9 @@ public class UpdateUserInfoFragment extends Fragment {
         token = getArguments().getString("token");
         findView(view);
         showInfo();
+
+        getActivity().setTitle("Tài khoản");
+
         btnImageUpdateUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

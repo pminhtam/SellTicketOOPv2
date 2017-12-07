@@ -165,9 +165,9 @@ public class UpdateImageFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return null;
+                return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
         }
 
         @Override

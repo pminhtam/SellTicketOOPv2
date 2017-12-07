@@ -28,6 +28,7 @@ import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -154,15 +155,26 @@ public class CreateFilmFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return null;
+                return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            Log.e("CreateFilm",s);
+            Log.e("CreateFilm",s);
+            try {
+                JSONObject body = new JSONObject(s);
+                int code = body.getInt("code");
+                Log.e("HistorySell",s);
+                if (code == 1) {
+                    Log.e("CreateFilm","Tao thanh cong");
+                    ((MainActivity) getActivity()).moveToHomeFragment();
+                } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 

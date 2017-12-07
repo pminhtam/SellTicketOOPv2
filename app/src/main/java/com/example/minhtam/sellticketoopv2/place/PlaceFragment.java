@@ -46,6 +46,9 @@ public class PlaceFragment extends Fragment {
         rcPlace = (RecyclerView) view.findViewById(R.id.rcPlace);
         context = getActivity();
 
+
+        getActivity().setTitle("Rạp chiếu");
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

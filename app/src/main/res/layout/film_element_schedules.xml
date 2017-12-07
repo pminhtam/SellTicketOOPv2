@@ -2,12 +2,13 @@
 <LinearLayout android:layout_height="70dp"
     android:layout_width="300dp"
     android:layout_margin="20dp"
-    android:background="@drawable/button_book"
+    android:background="@drawable/buton_vuong"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:layout_margin="10dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/txtFilmElementSchedules"/>
+        android:id="@+id/txtFilmElementSchedules"
+        android:textColor="@color/colorPrimaryDark"/>
 </LinearLayout>

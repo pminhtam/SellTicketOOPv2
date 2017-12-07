@@ -49,6 +49,9 @@ public class CreateScheduleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_schedule, container, false);
         findView(view);
+
+        getActivity().setTitle("Tạo lịch chiếu");
+
         btnSubmitCreateSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +96,7 @@ public class CreateScheduleFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
         }
 
         @Override

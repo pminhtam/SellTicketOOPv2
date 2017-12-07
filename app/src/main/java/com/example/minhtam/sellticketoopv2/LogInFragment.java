@@ -70,6 +70,8 @@ public class LogInFragment extends Fragment {
         btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
         context = getActivity();
 
+        getActivity().setTitle("Đăng nhập");
+
         // Click Create Account
         txtCreateAccount.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

@@ -54,7 +54,7 @@ public class FilmsRowAdapter extends RecyclerView.Adapter<FilmsRowAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "VI tri la " +String.valueOf(position), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "VI tri la " +String.valueOf(position), Toast.LENGTH_SHORT).show();
                 String id = String.valueOf(itemsRow.get(position).getId());
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 FilmFragment frag = new FilmFragment(context);

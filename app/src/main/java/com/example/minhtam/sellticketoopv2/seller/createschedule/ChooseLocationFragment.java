@@ -50,6 +50,9 @@ public class ChooseLocationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_choose_location, container, false);
         rcChooseLocation = (RecyclerView) view.findViewById(R.id.rcChooseLocation);
+
+        getActivity().setTitle("Chọn Địa điểm");
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

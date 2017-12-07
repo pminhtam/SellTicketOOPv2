@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity
         getUserDataFromToken();
         setNavigationDetail();
         hideItem(R.id.nav_chooseSeat);
+        setTitle("Ticket");
         if(userData.isEmpty()) {       //kiểm tra đã đăng nhập chưa
             moveToLogInFragment();
             hideItem(R.id.nav_update_info);
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity
             hideItem(R.id.nav_seller_create_schedule);
             hideItem(R.id.nav_seller_create_film);
             hideItem(R.id.nav_analyze);
+            hideItem(R.id.nav_history_sell);
         }
         else{
             moveToHomeFragment();

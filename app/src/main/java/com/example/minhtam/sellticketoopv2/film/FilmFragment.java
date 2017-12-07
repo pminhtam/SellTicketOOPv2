@@ -78,7 +78,10 @@ public class FilmFragment extends Fragment {
         //
 
         Log.e("FilmFragment",token);
-        Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
+        getActivity().setTitle("Chi tiết phim");
+
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

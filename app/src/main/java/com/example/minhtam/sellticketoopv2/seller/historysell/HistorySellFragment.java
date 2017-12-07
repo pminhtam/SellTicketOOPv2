@@ -50,6 +50,9 @@ public class HistorySellFragment extends Fragment {
         token = getArguments().getString("token");
         rcHistorySell = (RecyclerView) view.findViewById(R.id.rcHistorySell);
         items = new ArrayList<>();
+
+        getActivity().setTitle("Lịch sử bán vé");
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -75,7 +78,7 @@ public class HistorySellFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override

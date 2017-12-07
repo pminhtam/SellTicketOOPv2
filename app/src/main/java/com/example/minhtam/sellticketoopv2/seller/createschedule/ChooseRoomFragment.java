@@ -47,6 +47,10 @@ public class ChooseRoomFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_choose_room, container, false);
         rcChooseRoom = (RecyclerView) view.findViewById(R.id.rcChooseRoom);
+
+        getActivity().setTitle("Chọn Phòng");
+
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

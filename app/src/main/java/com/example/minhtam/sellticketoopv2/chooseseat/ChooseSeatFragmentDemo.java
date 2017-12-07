@@ -71,6 +71,10 @@ public class ChooseSeatFragmentDemo extends Fragment{
         btnBook = (Button) view.findViewById(R.id.btnBook);
         id = getArguments().getString("id");
         token = getArguments().getString("token");
+
+        getActivity().setTitle("Chọn Ghế");
+
+
         btnBook.setOnClickListener(new View.OnClickListener() {
             int totalMoney = 0;
             @Override
@@ -196,6 +200,12 @@ public class ChooseSeatFragmentDemo extends Fragment{
                     MainActivity activity = (MainActivity) getActivity();
                     activity.setUserMoney(balance);
                     //reload
+
+
+                    TicketDialog dialog = new TicketDialog(selectedIds,((MainActivity) getActivity()).getUserName(),getContext());
+                    dialog.show(activity.getFragmentManager(), "show dialog QR code ve google");
+
+
                     FragmentManager fragmentManager = activity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();

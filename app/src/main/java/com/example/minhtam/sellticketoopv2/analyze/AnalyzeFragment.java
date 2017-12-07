@@ -36,6 +36,9 @@ public class AnalyzeFragment extends Fragment {
         btnSex = (Button) view.findViewById(R.id.btnSex);
         btnSale = (Button) view.findViewById(R.id.btnSale);
 
+
+        getActivity().setTitle("Thống kê");
+
         btnAge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

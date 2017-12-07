@@ -68,6 +68,9 @@ public class SignInFragment extends Fragment {
         txtLogIn = (TextView) view.findViewById(R.id.txtLogIn);
         btnSubmitSign = (Button) view.findViewById(R.id.btnSubmitSign);
 
+
+        getActivity().setTitle("Đăng ký");
+
         // Init spinner roles
         ArrayAdapter<CharSequence> adapterRoles = ArrayAdapter.createFromResource(getActivity(),
             R.array.spinner_roles_array, android.R.layout.simple_spinner_item);

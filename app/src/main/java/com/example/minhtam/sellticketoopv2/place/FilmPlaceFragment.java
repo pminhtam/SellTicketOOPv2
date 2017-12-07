@@ -50,6 +50,9 @@ public class FilmPlaceFragment extends Fragment {
         rcPlace = (RecyclerView) view.findViewById(R.id.rcFilmPlace);
         context = getActivity();
 
+
+        getActivity().setTitle("Rạp chiếu");
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
