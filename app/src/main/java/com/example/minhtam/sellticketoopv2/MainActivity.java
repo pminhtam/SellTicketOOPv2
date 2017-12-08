@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.analyze.AnalyzeFragment;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
-import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 import com.example.minhtam.sellticketoopv2.home.HomeFragment;
 import com.example.minhtam.sellticketoopv2.place.PlaceFragment;
 import com.example.minhtam.sellticketoopv2.seller.CreateFilmFragment;
@@ -29,7 +27,6 @@ import com.example.minhtam.sellticketoopv2.seller.historysell.HistorySellFragmen
 import com.example.minhtam.sellticketoopv2.updateuserinfo.UpdateUserInfoFragment;
 import com.example.minhtam.sellticketoopv2.userhistorybookticket.UserHistoryBookTicketFragment;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -295,7 +292,7 @@ public class MainActivity extends AppCompatActivity
         else if (id ==R.id.nav_chooseSeat){     //thử nghiệm
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
+            ChooseSeatFragment frag = new ChooseSeatFragment();
             Bundle bundle = new Bundle();
             bundle.putString("token", token);
             bundle.putString("id", "1");

@@ -56,7 +56,7 @@ public class CreateFilmFragment extends Fragment {
         // Required empty public constructor
     }
     String token;
-    EditText edtNameCreateFilm,edtKindCreateFilm,edtDurationCreateFilm,edtDateCreateFilm;
+    EditText edtNameCreateFilm,edtKindCreateFilm,edtDurationCreateFilm,edtDateCreateFilm,edtContentCreateFilm;
     ImageView imgCreateFilm;
     Button btnImageCreateFilm,btnSubmitCreateFilm;
 
@@ -96,6 +96,7 @@ public class CreateFilmFragment extends Fragment {
         imgCreateFilm = (ImageView) view.findViewById(R.id.imgCreateFilm);
         btnImageCreateFilm = (Button) view.findViewById(R.id.btnImageCreateFilm);
         btnSubmitCreateFilm = (Button) view.findViewById(R.id.btnSubmitCreateFilm);
+        edtContentCreateFilm = (EditText) view.findViewById(R.id.edtContentCreateFilm);
     }
 
     @Override
@@ -140,7 +141,7 @@ public class CreateFilmFragment extends Fragment {
                         .addFormDataPart("duration", edtDurationCreateFilm.getText().toString())
                         .addFormDataPart("release_date ", edtDateCreateFilm.getText().toString())
                         .addFormDataPart("image", file_path.substring(file_path.lastIndexOf("/") + 1), file_body)
-                        .addFormDataPart("content","")
+                        .addFormDataPart("content",edtContentCreateFilm.getText().toString())
                         .setType(MultipartBody.FORM)
                         .build();
                 Request request = new Request.Builder()

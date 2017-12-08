@@ -31,10 +31,10 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChooseSeatFragment extends Fragment {
+public class ChooseSeatFragmentTest extends Fragment {
 
 
-    public ChooseSeatFragment() {
+    public ChooseSeatFragmentTest() {
         // Required empty public constructor
     }
     String id;
@@ -76,7 +76,7 @@ public class ChooseSeatFragment extends Fragment {
         token = getArguments().getString("token");
 
 
-        Log.e("ChooseSeatFragment",token);
+        Log.e("ChooseSeatFragmentTest",token);
 
 
 //
@@ -138,46 +138,46 @@ public class ChooseSeatFragment extends Fragment {
             try {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
-                Log.e("ChooseSeatFragment", "Lay xong ghe");
+                Log.e("ChooseSeatFragmentTest", "Lay xong ghe");
                 if (code == 1) {
                     JSONObject data = body.getJSONObject("data");
 //                    Toast.makeText(getActivity(), data.getString("seats"), Toast.LENGTH_SHORT).show();
                     seats = data.getJSONArray("seats");
                     Toast.makeText(getActivity(), seats.getString(0), Toast.LENGTH_SHORT).show();
-                    Log.e("ChooseSeatFragment", seats.getString(1));
-                    Log.e("ChooseSeatFragment", "Dao dai cua du lieu seats la " + seats.length());
-                    Log.e("ChooseSeatFragment", seats.getJSONArray(1).getString(0));
+                    Log.e("ChooseSeatFragmentTest", seats.getString(1));
+                    Log.e("ChooseSeatFragmentTest", "Dao dai cua du lieu seats la " + seats.length());
+                    Log.e("ChooseSeatFragmentTest", seats.getJSONArray(1).getString(0));
 
                     int i = 0;
                     for(i=0;i<seats.length();i++){
                         JSONArray seat = seats.getJSONArray(i);
-                        Log.e("ChooseSeatFragment", seats.getJSONArray(i).getString(0));
+                        Log.e("ChooseSeatFragmentTest", seats.getJSONArray(i).getString(0));
                         String row = seat.getString(0);
-                        Log.e("ChooseSeatFragment", "Row la " +row);
+                        Log.e("ChooseSeatFragmentTest", "Row la " +row);
 
                         String column = seat.getString(1);
-                        Log.e("ChooseSeatFragment", "column la " + column);
+                        Log.e("ChooseSeatFragmentTest", "column la " + column);
 
-                        Log.e("ChooseSeatFragment", "column la " + column);
+                        Log.e("ChooseSeatFragmentTest", "column la " + column);
 
-                        Log.e("ChooseSeatFragment", "column la " + column);
+                        Log.e("ChooseSeatFragmentTest", "column la " + column);
 
                         ItemSeat itemSeat = new ItemSeat(row,column);
                         itemSeats.add(itemSeat);
                         int rowSeat = i%10;
-                        Log.e("ChooseSeatFragment", "rowSeat la " + rowSeat);
+                        Log.e("ChooseSeatFragmentTest", "rowSeat la " + rowSeat);
 
                         int columnSeat = i/10;
-                        Log.e("ChooseSeatFragment", "columnSeat la " + columnSeat);
+                        Log.e("ChooseSeatFragmentTest", "columnSeat la " + columnSeat);
 
                         final Button button = new Button(getActivity());
-                        Log.e("ChooseSeatFragment", "Tao Button la " );
+                        Log.e("ChooseSeatFragmentTest", "Tao Button la " );
 
                         button.setBackgroundResource(R.drawable.sofa);
                         button.setTag(R.id.tagSeatColumn,row);
                         button.setTag(R.id.tagSeatRow,column);
                         listLinear.get(columnSeat).addView(button);
-                        Log.e("ChooseSeatFragment","Vua them ghe hang "+row + "  Cot:"+column);
+                        Log.e("ChooseSeatFragmentTest","Vua them ghe hang "+row + "  Cot:"+column);
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

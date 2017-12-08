@@ -37,6 +37,14 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:hint="Ngày công chiếu 18/10/2017" />
+        <EditText
+            android:id="@+id/edtContentCreateFilm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Nội dung phim"
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

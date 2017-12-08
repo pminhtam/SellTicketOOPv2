@@ -6,26 +6,18 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
-import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -203,7 +195,7 @@ public class FilmFragment extends Fragment {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             FragmentManager fragmentManager = getFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            ChooseSeatFragment frag = new ChooseSeatFragment();
+                            ChooseSeatFragmentTest frag = new ChooseSeatFragmentTest();
                             Bundle bundle = new Bundle();
                             bundle.putString("id",strItem.get(position));
                             bundle.putString("token",token);

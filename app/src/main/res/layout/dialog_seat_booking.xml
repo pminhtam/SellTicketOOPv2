@@ -3,6 +3,9 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/txtState"
         android:layout_width="wrap_content"
@@ -16,7 +19,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Available" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/txtCategory"
         android:layout_width="wrap_content"
@@ -30,7 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="VIP" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/txtPrice"
         android:layout_width="wrap_content"
@@ -44,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="80000" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSelect"

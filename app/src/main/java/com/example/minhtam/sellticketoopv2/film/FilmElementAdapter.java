@@ -3,7 +3,6 @@ package com.example.minhtam.sellticketoopv2.film;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragment;
-import com.example.minhtam.sellticketoopv2.chooseseat.ChooseSeatFragmentDemo;
 
 import java.util.ArrayList;
 
@@ -70,7 +68,7 @@ public class FilmElementAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     @Override
                     public void onClick(View v) {
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
+                        ChooseSeatFragment frag = new ChooseSeatFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("id",itemFilmSchedules.getIdSchedules());
                         bundle.putString("token",token);

@@ -12,21 +12,18 @@ import android.os.Bundle;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
-import com.example.minhtam.sellticketoopv2.home.ItemFilm;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,22 +31,18 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
-import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okio.BufferedSink;
 
 /**
  * Created by trungdunghoang on 14/11/2017.
  */
 
-public class ChooseSeatFragmentDemo extends Fragment{
+public class ChooseSeatFragment extends Fragment{
     String id;
     String token;
     TextView txtInfo;
@@ -58,7 +51,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
     SeatAdapter seatsAdapter;
     ArrayList<ItemSeat> items;
 
-    public ChooseSeatFragmentDemo() {
+    public ChooseSeatFragment() {
         // Required empty public constructor
     }
     @Override
@@ -104,7 +97,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new ChooseSeatFragmentDemo.GetSeat().execute(ApiUrl.getSchedule(id));
+                new ChooseSeatFragment.GetSeat().execute(ApiUrl.getSchedule(id));
             }
         });
         return view;
@@ -131,7 +124,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
         JSONArray seats;
         @Override
         protected void onPostExecute(String s) {
-            Log.i("ChooseSeatFragment",s);
+            Log.i("ChooseSeatFragmentTest",s);
             super.onPostExecute(s);
             try {
                 JSONObject body = new JSONObject(s);
@@ -190,7 +183,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
         JSONArray seats;
         @Override
         protected void onPostExecute(String s) {
-            Log.i("info","ChooseSeatFragment.BookSeat:"+s);
+            Log.i("info","ChooseSeatFragmentTest.BookSeat:"+s);
             super.onPostExecute(s);
             try {
                 JSONObject body = new JSONObject(s);
@@ -208,7 +201,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
 
                     FragmentManager fragmentManager = activity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    ChooseSeatFragmentDemo frag = new ChooseSeatFragmentDemo();
+                    ChooseSeatFragment frag = new ChooseSeatFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("id",id);
                     bundle.putString("token",token);
@@ -240,7 +233,7 @@ public class ChooseSeatFragmentDemo extends Fragment{
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    new ChooseSeatFragmentDemo.BookSeat(selectedIds).execute(ApiUrl.bookTicket());
+                                    new ChooseSeatFragment.BookSeat(selectedIds).execute(ApiUrl.bookTicket());
                                 }
                             });
                             dismiss();
