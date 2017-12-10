@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.R;
@@ -76,9 +78,9 @@ public class ChooseFilmSellFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string(); //chuoi tra lai s o ham onPostExecute
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
@@ -109,8 +111,13 @@ public class ChooseFilmSellFragment extends Fragment {
 
 //                Toast.makeText(FilmActivity.this,s,Toast.LENGTH_LONG).show();
                 }
+                else{
+                    Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
+                }
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("ChooseFilmSellFragment", "Lỗi chuyển Json");
+
             }
         }
     }

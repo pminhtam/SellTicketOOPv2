@@ -163,7 +163,7 @@ public class UpdateImageFragment extends Fragment {
                     Response response = okHttpClient.newCall(request).execute();
                     return response.body().string();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
                 return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
             }
@@ -187,7 +187,9 @@ public class UpdateImageFragment extends Fragment {
 
                 } else Toast.makeText(getActivity(), "Cập nhập thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("UpdateImageFragment", "Lỗi chuyển Json");
+
             }
         }
     }

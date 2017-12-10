@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.minhtam.sellticketoopv2.ApiUrl;
@@ -83,7 +87,7 @@ public class HomeFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string(); //chuoi tra lai s o ham onPostExecute
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
@@ -153,9 +157,18 @@ public class HomeFragment extends Fragment {
                     rcFilm.setAdapter(adapter);
 
 //                Toast.makeText(FilmActivity.this,s,Toast.LENGTH_LONG).show();
-                } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "kết nối thất bại", Toast.LENGTH_SHORT).show();
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT);
+                    ImageView img = new ImageView(context);
+                    img.setScaleType(ImageView.ScaleType.CENTER);
+                    img.setImageResource(R.drawable.nointernet);
+                    getActivity().addContentView(img,layoutParams);
+                }
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("HomeFragment", "Lỗi chuyển Json");
             }
         }
     }

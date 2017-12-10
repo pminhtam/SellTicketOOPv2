@@ -122,9 +122,9 @@ public class LogInFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string(); //chuoi tra lai s o ham onPostExecute
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
@@ -144,9 +144,14 @@ public class LogInFragment extends Fragment {
                     ((MainActivity) getActivity()).showItem(R.id.nav_update_info);
                     ((MainActivity) getActivity()).showItem(R.id.nav_user_history);
 //                    ((MainActivity) getActivity()).showItem(R.id.nav_seller_create_schedule);
-                } else Log.e("Login","That bai");
+                } else {
+                    Log.e("Login", "That bai");
+                    Toast.makeText(getActivity(), "đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                }
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("LogInFragment", "Lỗi chuyển Json");
+
             }
         }
     }

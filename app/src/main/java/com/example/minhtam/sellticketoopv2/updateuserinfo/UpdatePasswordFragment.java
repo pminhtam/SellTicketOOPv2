@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import android.widget.Toast;
 import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -88,16 +92,30 @@ public class UpdatePasswordFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast.makeText(getActivity(),"Cap nhat pass thành công",Toast.LENGTH_SHORT).show();
-            ((MainActivity) getActivity()).moveToHomeFragment();
+            try {
+                JSONObject body = new JSONObject(s);
+                int code = body.getInt("code");
+                if (code == 1) {
+                    Toast.makeText(getActivity(), "Cap nhat pass thành công", Toast.LENGTH_SHORT).show();
+                    ((MainActivity) getActivity()).moveToHomeFragment();
+                }
+                else{
+                    Toast.makeText(getActivity(), "đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+//                e.printStackTrace();
+                Log.e("UpdatePasswordFragment", "Lỗi chuyển Json");
+
+            }
+
 
         }
     }

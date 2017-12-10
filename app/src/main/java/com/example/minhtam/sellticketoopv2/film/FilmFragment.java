@@ -104,9 +104,9 @@ public class FilmFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
@@ -143,7 +143,9 @@ public class FilmFragment extends Fragment {
                 }
                 else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("FilmFragment", "Lỗi chuyển Json");
+
             }
 
         }
@@ -162,9 +164,9 @@ public class FilmFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
@@ -212,7 +214,9 @@ public class FilmFragment extends Fragment {
                 }
                 else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("FilmFragment", "Lỗi chuyển Json");
+
             }
 
         }

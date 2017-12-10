@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import com.example.minhtam.sellticketoopv2.ApiUrl;
 import com.example.minhtam.sellticketoopv2.MainActivity;
 import com.example.minhtam.sellticketoopv2.R;
 import com.example.minhtam.sellticketoopv2.UserDataManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -103,19 +107,30 @@ public class UpdateNameFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
-//            ((MainActivity) getActivity()).setNewUserData();
-            activity.setNewUserData();
-            ((MainActivity) getActivity()).moveToHomeFragment();
+            try {
+                JSONObject body = new JSONObject(s);
+                int code = body.getInt("code");
+                if (code == 1) {
+                    Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
+                    activity.setNewUserData();
+                    ((MainActivity) getActivity()).moveToHomeFragment();
+                }
+                else{
+                    Toast.makeText(getActivity(), "đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+//                e.printStackTrace();
+                Log.e("UpdateNameFragment", "Lỗi chuyển Json");
 
+            }
 //            activity.moveToHomeFragment();
         }
     }

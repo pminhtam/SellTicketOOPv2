@@ -154,7 +154,7 @@ public class CreateFilmFragment extends Fragment {
                     Response response = okHttpClient.newCall(request).execute();
                     return response.body().string();
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
                 return "{\"code\":0,\"message\":\"Cập nhật thất bại\"}";
             }
@@ -174,7 +174,8 @@ public class CreateFilmFragment extends Fragment {
                     ((MainActivity) getActivity()).moveToHomeFragment();
                 } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("CreateFilmFragment", "Lỗi chuyển Json");
             }
         }
     }

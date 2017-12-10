@@ -117,9 +117,9 @@ public class ChooseSeatFragment extends Fragment{
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
         JSONArray seats;
         @Override
@@ -148,7 +148,9 @@ public class ChooseSeatFragment extends Fragment{
                 } else Toast.makeText(getActivity(), "Khong Co Film", Toast.LENGTH_SHORT).show();
 
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("ChooseSeatFragment", "Lỗi chuyển Json");
+
             }
         }
     }

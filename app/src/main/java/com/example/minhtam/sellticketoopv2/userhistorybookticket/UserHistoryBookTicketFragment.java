@@ -1,6 +1,7 @@
 package com.example.minhtam.sellticketoopv2.userhistorybookticket;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -77,11 +78,12 @@ public class UserHistoryBookTicketFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string(); //chuoi tra lai s o ham onPostExecute
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
+        @SuppressLint("LongLogTag")
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -112,7 +114,9 @@ public class UserHistoryBookTicketFragment extends Fragment {
 
                 } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("UserHistoryBookTicketFragment", "Lỗi chuyển Json");
+
             }
         }
     }

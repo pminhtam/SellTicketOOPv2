@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,10 +128,10 @@ public class SignInFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string(); //chuoi tra lai s o ham onPostExecute
             } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+//                e.printStackTrace();
+//                Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
             }
-            return null;
+            return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
 
         @Override
@@ -146,8 +147,8 @@ public class SignInFragment extends Fragment {
 
                 } else Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(getActivity(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+//                e.printStackTrace();
+                Log.e("SignInFragment", "Lỗi chuyển Json");
             }
         }
     }

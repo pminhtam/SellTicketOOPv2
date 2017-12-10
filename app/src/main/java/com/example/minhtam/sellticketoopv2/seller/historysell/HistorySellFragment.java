@@ -76,7 +76,7 @@ public class HistorySellFragment extends Fragment {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string(); //chuoi tra lai s o ham onPostExecute
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             return "{\"code\":0,\"message\":\"Thất bại\"}";
         }
@@ -114,7 +114,9 @@ public class HistorySellFragment extends Fragment {
 
                 } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                Log.e("HistorySellFragment", "Lỗi chuyển Json");
+
             }
         }
     }
