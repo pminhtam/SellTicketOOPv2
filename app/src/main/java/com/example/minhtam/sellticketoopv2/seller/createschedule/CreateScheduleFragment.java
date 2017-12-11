@@ -109,6 +109,7 @@ public class CreateScheduleFragment extends Fragment {
                 if (code == 1) {
 //                    JSONObject dataJson = body.getJSONObject("data");
 //                    ((MainActivity) getActivity()).setNewUserData();
+                    Toast.makeText(getActivity(), "Thành công", Toast.LENGTH_SHORT).show();
                     ((MainActivity) getActivity()).moveToHomeFragment();
 
                 } else Toast.makeText(getActivity(), "Cập nhập thất bại", Toast.LENGTH_SHORT).show();

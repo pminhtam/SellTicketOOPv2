@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -47,7 +48,7 @@ public class HomeFragment extends Fragment {
     FilmAdapter adapter;
     RecyclerView rcFilm;
     Context context;
-
+    FrameLayout frameHome;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         token = getArguments().getString("token");
         rcFilm = (RecyclerView) view.findViewById(R.id.rcFilm);
+        frameHome = (FrameLayout) view.findViewById(R.id.frameHome);
         context = getActivity();
 
         getActivity().setTitle("Trang chủ");
@@ -159,12 +161,13 @@ public class HomeFragment extends Fragment {
 //                Toast.makeText(FilmActivity.this,s,Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getActivity(), "kết nối thất bại", Toast.LENGTH_SHORT).show();
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.MATCH_PARENT);
+//                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+//                            LinearLayout.LayoutParams.MATCH_PARENT);
                     ImageView img = new ImageView(context);
                     img.setScaleType(ImageView.ScaleType.CENTER);
                     img.setImageResource(R.drawable.nointernet);
-                    getActivity().addContentView(img,layoutParams);
+//                    getActivity().addContentView(img,layoutParams);
+                    frameHome.addView(img);
                 }
             } catch (JSONException e) {
 //                e.printStackTrace();

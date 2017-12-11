@@ -79,6 +79,7 @@ public class CreateFilmFragment extends Fragment {
                 startActivityForResult(intent,REQUEST_CODE_FOLDER);
             }
         });
+        getActivity().setTitle("Tạo Phim");
 
         btnSubmitCreateFilm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +172,8 @@ public class CreateFilmFragment extends Fragment {
                 Log.e("HistorySell",s);
                 if (code == 1) {
                     Log.e("CreateFilm","Tao thanh cong");
-                    ((MainActivity) getActivity()).moveToHomeFragment();
+                    Toast.makeText(getActivity(), "Tạo phim thành công", Toast.LENGTH_SHORT).show();
+                    ((MainActivity) getActivity()).moveToSellerCreateFilm();
                 } else Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
 //                e.printStackTrace();

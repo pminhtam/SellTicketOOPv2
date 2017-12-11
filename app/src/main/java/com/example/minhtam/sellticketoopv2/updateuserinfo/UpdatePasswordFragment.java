@@ -49,6 +49,9 @@ public class UpdatePasswordFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_update_password, container, false);
+
+        getActivity().setTitle("Đổi mật khẩu");
+
         findView(view);
 
         btnSubmitUpdatePass.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +108,7 @@ public class UpdatePasswordFragment extends Fragment {
                 int code = body.getInt("code");
                 if (code == 1) {
                     Toast.makeText(getActivity(), "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                    ((MainActivity) getActivity()).moveToHomeFragment();
+                    ((MainActivity) getActivity()).moveToUpdateUserInfoFragment();
                 }
                 else{
                     Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();

@@ -86,6 +86,10 @@ public class UpdateImageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_update_image, container, false);
+
+        getActivity().setTitle("Đổi ảnh đại diện");
+
+
         imgUpdateImage = (ImageView) view.findViewById(R.id.imgUpdateImage);
         btnChooseUpdateImage = (Button) view.findViewById(R.id.btnChooseUpdateImage);
         btnSubmitUpdateImage = (Button) view.findViewById(R.id.btnSubmitUpdateImage);
@@ -180,10 +184,11 @@ public class UpdateImageFragment extends Fragment {
                     JSONObject dataJson = body.getJSONObject("data");
                     String useravatar = dataJson.getString("avatar");
                     activity.setUserAvatar(useravatar);
+                    Toast.makeText(getActivity(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
 //                    ((MainActivity) getActivity()).setNewUserData();
                     activity.setNewUserData();
                     ((MainActivity) getActivity()).setNavigationDetail();
-                    ((MainActivity) getActivity()).moveToHomeFragment();
+                    ((MainActivity) getActivity()).moveToUpdateUserInfoFragment();
 
                 } else Toast.makeText(getActivity(), "Cập nhập thất bại", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {

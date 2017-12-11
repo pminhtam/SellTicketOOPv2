@@ -68,6 +68,8 @@ public class UpdateNameFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_update_name, container, false);
+        getActivity().setTitle("Đổi tên");
+
         findView(view);
         btnSubmitUpdateName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,12 +121,13 @@ public class UpdateNameFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
-                    Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
                     activity.setNewUserData();
-                    ((MainActivity) getActivity()).moveToHomeFragment();
+                    Toast.makeText(getActivity(), "đổi tên thành công", Toast.LENGTH_SHORT).show();
+                    ((MainActivity) getActivity()).moveToUpdateUserInfoFragment();
                 }
                 else{
-                    Toast.makeText(getActivity(), "đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "thất bại", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
 //                e.printStackTrace();
