@@ -104,11 +104,11 @@ public class UpdatePasswordFragment extends Fragment {
                 JSONObject body = new JSONObject(s);
                 int code = body.getInt("code");
                 if (code == 1) {
-                    Toast.makeText(getActivity(), "Cap nhat pass thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show();
                     ((MainActivity) getActivity()).moveToHomeFragment();
                 }
                 else{
-                    Toast.makeText(getActivity(), "đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
 //                e.printStackTrace();

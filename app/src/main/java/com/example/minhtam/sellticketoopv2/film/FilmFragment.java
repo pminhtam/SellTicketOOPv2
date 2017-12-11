@@ -212,7 +212,7 @@ public class FilmFragment extends Fragment {
 
 //                    Toast.makeText(getActivity(), "Co Lít View", Toast.LENGTH_SHORT).show();
                 }
-                else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getActivity(), "Không có phim", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
 //                e.printStackTrace();
                 Log.e("FilmFragment", "Lỗi chuyển Json");

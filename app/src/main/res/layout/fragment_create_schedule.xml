@@ -15,28 +15,28 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Thời gian bắt đầu 18/10/2017 13:00" />
+            android:hint="Thời gian bắt đầu. Vd: 18/10/2017 13:00" />
         <EditText
             android:id="@+id/edtTimeEnd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Thời gian kết thúc 18/10/2017 14:17" />
+            android:hint="Thời gian kết thúc. Vd: 18/10/2017 14:17" />
         <EditText
             android:id="@+id/edtPriceVIP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Giá của ghế Vip 80000" />
+            android:hint="Giá của ghế VIP. Vd: 80000" />
         <EditText
             android:id="@+id/edtPriceNORMAL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Gia của ghế thường 50000" />
+            android:hint="Gia của ghế thường. Vd: 50000" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

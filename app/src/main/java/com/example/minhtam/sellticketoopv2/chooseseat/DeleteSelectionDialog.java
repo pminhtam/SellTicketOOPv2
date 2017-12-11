@@ -28,7 +28,7 @@ public class DeleteSelectionDialog extends DialogFragment {
         final MainActivity activity = (MainActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         // Dialog will have "Make a selection" as the title
-        builder.setMessage("Are you sure to delete this selection?")
+        builder.setMessage("Hủy chọn vé này?")
                 // An OK button that does nothing
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -36,7 +36,7 @@ public class DeleteSelectionDialog extends DialogFragment {
                     }
                 })
                 // A "Cancel" button that does nothing
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Bỏ qua", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Nothing happening here either
                     }
