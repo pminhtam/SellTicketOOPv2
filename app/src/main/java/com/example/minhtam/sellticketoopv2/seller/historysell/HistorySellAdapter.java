@@ -40,7 +40,7 @@ public class HistorySellAdapter extends RecyclerView.Adapter<HistorySellAdapter.
         holder.txtNameFilmSellHistory.setText(itemsHistorySell.get(position).getNameFilm());
         holder.txtLocationSellHistory.setText(itemsHistorySell.get(position).getNameLocation());
         holder.txtPriceSellHistory.setText(String.valueOf(itemsHistorySell.get(position).getPrice()));
-        holder.txtRowColSellHistory.setText("Hang la "+ itemsHistorySell.get(position).getRow() + "\nCot la "+ itemsHistorySell.get(position).getColumn());
+        holder.txtRowColSellHistory.setText("Số hàng "+ itemsHistorySell.get(position).getRow() + "\nSố cột "+ itemsHistorySell.get(position).getColumn());
         holder.txtUserBuyNameSellHistory.setText("Người mua:" + itemsHistorySell.get(position).getUser_buy_name());
 
         holder.txtTimeBeginSellHistory.setText("Thời gian bắt đâu:" + itemsHistorySell.get(position).getTime_begin());

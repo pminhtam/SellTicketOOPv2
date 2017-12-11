@@ -24,12 +24,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ten"
+                    android:text="Tên"
                     android:id="@+id/txtNameFilmElement"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thoi gian"
+                    android:text="Thời gian"
                     android:id="@+id/txtTimeFilmElement"/>
             </LinearLayout>
         </LinearLayout>

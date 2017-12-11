@@ -43,7 +43,7 @@ public class UserHistoryAdapter extends RecyclerView.Adapter<UserHistoryAdapter.
         holder.txtNameFilmUserHistory.setText(itemUserHistoryBookTickets.get(position).getNameFilm());
         holder.txtLocationUserHistory.setText(itemUserHistoryBookTickets.get(position).getNameLocation());
         holder.txtPriceUserHistory.setText(String.valueOf(itemUserHistoryBookTickets.get(position).getPrice()));
-        holder.txtRowColUserHistory.setText("Hang la "+ itemUserHistoryBookTickets.get(position).getRow() + "\n Cot la "+ itemUserHistoryBookTickets.get(position).getColumn());
+        holder.txtRowColUserHistory.setText("Số hàng "+ itemUserHistoryBookTickets.get(position).getRow() + "\n Số cột "+ itemUserHistoryBookTickets.get(position).getColumn());
         holder.txtTimeBeginUserHistory.setText("Thời gian bắt đâu:" + itemUserHistoryBookTickets.get(position).getTime_begin());
         holder.txtTimeEndUserHistory.setText("Thời gian kết thúc:" +itemUserHistoryBookTickets.get(position).getTime_end());
         holder.txtTimeUserBookUserHistory.setText("Thời gian bmua vé:" +itemUserHistoryBookTickets.get(position).getTime_user_book());

@@ -40,10 +40,10 @@ public class SeatDialog extends DialogFragment {
         final Button btnClose = (Button) dialogView.findViewById(R.id.btnClose);
 
         if (itemSeat.isChoose()) {
-            txtSeatState.setText("Booked");
+            txtSeatState.setText("Có người mua");
             btnSelect.setVisibility(View.GONE);
         } else {
-            txtSeatState.setText("Available");
+            txtSeatState.setText("Sẵn sàng");
         }
         txtSeatCategory.setText(itemSeat.getLevel());
         txtSeatPrice.setText(""+itemSeat.getPrice());

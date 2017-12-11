@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="State" />
+        android:text="Trạng thái" />
 
     <TextView
         android:id="@+id/txtSeatState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Available" />
+        android:text="Sẵn sàng" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Category" />
+        android:text="Loại vé" />
 
     <TextView
         android:id="@+id/txtSeatCategory"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Price" />
+        android:text="Giá tiền" />
 
     <TextView
         android:id="@+id/txtSeatPrice"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Select"
+        android:text="Chọn"
         android:background="@drawable/button_book" />
 
     <Button
@@ -68,6 +68,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Close"
+        android:text="Đóng"
         android:background="@drawable/button_book"/>
 </LinearLayout>

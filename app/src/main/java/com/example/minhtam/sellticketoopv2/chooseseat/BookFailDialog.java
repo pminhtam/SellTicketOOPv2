@@ -21,7 +21,7 @@ public class BookFailDialog extends DialogFragment {
         final MainActivity activity = (MainActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         // Dialog will have "Make a selection" as the title
-        builder.setMessage("Can't book because your money is not enough. ")
+        builder.setMessage("Bạn không còn đủ tiền để đặt thêm vé. ")
                 // An OK button that does nothing
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

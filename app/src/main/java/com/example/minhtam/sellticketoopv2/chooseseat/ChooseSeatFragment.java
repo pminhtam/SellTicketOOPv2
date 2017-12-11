@@ -145,7 +145,7 @@ public class ChooseSeatFragment extends Fragment{
                     }
                     seatsAdapter = new SeatAdapter(getActivity(), items);
                     gridView.setAdapter(seatsAdapter);
-                } else Toast.makeText(getActivity(), "Khong Co Film", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(getActivity(), "Không có phim", Toast.LENGTH_SHORT).show();
 
             } catch (JSONException e) {
 //                e.printStackTrace();
@@ -228,7 +228,7 @@ public class ChooseSeatFragment extends Fragment{
             selectedIds = getArguments().getIntegerArrayList("selectedIds");
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             // Dialog will have "Make a selection" as the title
-            builder.setMessage("Are you sure? ")
+            builder.setMessage("Xác nhận đặt vé? ")
                     // An OK button that does nothing
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -241,7 +241,7 @@ public class ChooseSeatFragment extends Fragment{
                             dismiss();
                         }
                     })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("Bỏ qua", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dismiss();
                         }

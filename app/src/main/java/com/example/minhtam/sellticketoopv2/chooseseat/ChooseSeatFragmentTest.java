@@ -181,14 +181,14 @@ public class ChooseSeatFragmentTest extends Fragment {
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(getActivity(),"Cot la : "+button.getTag(R.id.tagSeatColumn)+"\n Hang la :"+ button.getTag(R.id.tagSeatRow),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(),"Số cột : "+button.getTag(R.id.tagSeatColumn)+"\n Số hàng :"+ button.getTag(R.id.tagSeatRow),Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
 
 
                 }
-                else Toast.makeText(getActivity(), "Khong CO FIlm", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getActivity(), "Không có phim", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
