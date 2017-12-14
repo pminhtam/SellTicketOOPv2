@@ -63,7 +63,7 @@ public class FilmsRowAdapter extends RecyclerView.Adapter<FilmsRowAdapter.ViewHo
                 bundle.putString("id",id);
                 bundle.putString("token",token);
                 frag.setArguments(bundle);
-                fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });

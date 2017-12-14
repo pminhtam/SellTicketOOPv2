@@ -56,7 +56,7 @@ public class ChooseFilmSellAdapter extends RecyclerView.Adapter<ChooseFilmSellAd
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 ChooseLocationFragment frag = new ChooseLocationFragment(items.get(position),token);
                 fragmentTransaction.replace(R.id.frame,frag);
-                fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });

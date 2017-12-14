@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity
         bundle.putString("token", token);
         bundle.putString("id", "1");
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
         frag.setArguments(bundle);
-        fragmentTransaction.addToBackStack(frag.getClass().getSimpleName());
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frame, frag);
         fragmentTransaction.commit();
     }
